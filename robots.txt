@@ -1,0 +1,7 @@
+User-agent: Mediapartners-Google
+User-agent: *
+Disallow: /auth/
+Disallow: /admin/
+Allow: /san-pham
+Allow: /gio-hang
+Sitemap: https://dociperfume.vn/sitemap.xml
