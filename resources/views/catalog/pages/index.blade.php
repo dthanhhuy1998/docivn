@@ -137,17 +137,17 @@
                                         <div class="col-lg-3 col-md-3 col-xs-6 col-6">
                                             <div class="product-card card">
                                                 <div class="card-header">
-                                                    <a class="card-image ratio ratio-1x1" title="{{ $item->product->productDescription->name }}" href="{{ route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) }}">
+                                                    <a class="card-image ratio ratio-1x1" title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}">
                                                         <img src="@if(!empty($item->product->image)) {{ asset('storage/app/' . $item->product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" src="{{ asset('public/catalog/assets/img/lazy-load.png') }}" height="auto" width="100%" alt="{{ $item->product->productDescription->name }}">
                                                     </a>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="card-title">
-                                                        <a title="{{ $item->product->productDescription->name }}" href="{{ route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) }}">{{ $item->product->productDescription->name }}</a>
+                                                        <a title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}">{{ $item->product->productDescription->name }}</a>
                                                     </div>
                                                     <div class="card-bottom">
                                                         <div class="card-view">
-                                                            <a title="Chi tiết {{ $item->product->productDescription->name }}" href="{{ route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) }}" class="button-theme button-theme_primary button-view"><span>Chi tiết</span></a>
+                                                            <a title="Chi tiết {{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}" class="button-theme button-theme_primary button-view"><span>Chi tiết</span></a>
                                                             <a 
                                                                 href="#"
                                                                 class="button-cart"
@@ -171,7 +171,7 @@
                             </div>
                             @if($category->slug != 'tester')
                                 <div class="col-lg-12 col-xs-12 col-md-12 content-center mt-5">
-                                    <a class="button-theme button-theme_secondary" href="{{ route('catalog.productCategory', $category->slug) }}" title="Xem thêm về {{ $category->name }}" data-title="Xem thêm">
+                                    <a class="button-theme button-theme_secondary" href="{{ Illuminate\Support\Facades\Route::has('catalog.productCategory') ? route('catalog.productCategory', $category->slug) : '#' }}" title="Xem thêm về {{ $category->name }}" data-title="Xem thêm">
                                         <span>Xem thêm</span>
                                     </a>
                                 </div>
@@ -243,7 +243,7 @@
                         <div class="row">
                             @foreach($albums as $image)
                                 <div class="col-md-3 col-lg-3 col-xs-12">
-                                    <a href="{{ route('catalog.gallery', $image->id) }}" class="galley-item">
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.gallery') ? route('catalog.gallery', $image->id) : '#' }}" class="galley-item">
                                         <div class="gallery-image">
                                             <img src="{{ asset('storage/app/'. $image->image_picture) }}" alt="{{ $image->image_name }}" class="w-100">
                                             <div class="gallery-overlay">
@@ -323,7 +323,7 @@
                             <div class="row row-cols-lg-3 row-cols-1 row-cols-sm-2 g-3">
                                 @foreach($articles as $article)
                                     <div class="col">
-                                        <a href="{{ route('catalog.article', [$article->category_slug, $article->post_slug]) }}" class="article-card card">
+                                        <a href="{{ Illuminate\Support\Facades\Route::has('catalog.article') ? route('catalog.article', [$article->category_slug, $article->post_slug]) : '#' }}" class="article-card card">
                                             <div class="card-header">
                                                 <img src="@if(!empty($article->post_image)) {{ asset('storage/app/'.$article->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="{{ $article->post_title }}">
                                             </div>
@@ -347,7 +347,7 @@
 								<div class="owl-carousel owl-activity">
                                     @foreach($articles as $article)
                                         <div class="item">
-                                            <a href="{{ route('catalog.article', [$article->category_slug, $article->post_slug]) }}" class="article-card card">
+                                            <a href="{{ \Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', [$article->category_slug, $article->post_slug]) : '#' }}" class="article-card card">
                                                 <div class="card-header">
                                                     <img src="@if(!empty($article->post_image)) {{ asset('storage/app/'.$article->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="Bí quyết chọn nước hoa phù hợp cho mọi cô gái">
                                                 </div>
@@ -372,7 +372,7 @@
                 </div>
             </div>
             <div class="col-lg-12 col-xs-12 col-md-12 content-center mt-3">
-                <a  class="button-theme button-theme_secondary" href="{{ route('catalog.articles') }}">
+                <a  class="button-theme button-theme_secondary" href="{{ Illuminate\Support\Facades\Route::has('catalog.articles') ? route('catalog.articles') : '#' }}">
                     <span> Xem thêm </span>
                 </a>
             </div>
@@ -475,7 +475,7 @@
                         </h2>
                     </div>
                     <div class="col-lg-6 col-xs-6 col-lg-12 col-xs-12 col-md-12">
-                        <form class="form-comments" action="{{ route('catalog.sendComment') }}" method="POST" id="comment-form">
+                        <form class="form-comments" action="{{ Illuminate\Support\Facades\Route::has('catalog.sendComment') ? route('catalog.sendComment') : '#' }}" method="POST" id="comment-form">
                             @csrf
                             <div class="form-group">
                                 <label class="required">Nhập tên</label>
@@ -516,7 +516,7 @@
                     </h2>
                 </div>
                 <div class="col-lg-6 col-xs-6 col-lg-12 col-xs-12 col-md-12">
-                    <form class="find-seller-form" action="{{ route('catalog.getSeller') }}" method="get">
+                    <form class="find-seller-form" action="{{ Illuminate\Support\Facades\Route::has('catalog.getSeller') ? route('catalog.getSeller') : '#' }}" method="get">
                         <input type="number" placeholder="Nhập số điện thoại" class="phone-seller" required>
                         <button type="submit">Tìm</button>
                     </form>

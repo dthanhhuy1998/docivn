@@ -35,171 +35,171 @@ Route::get(
     [CatalogController::class, 'homepage']
 )->name('catalog.homepage');
 
-Route::get(
-    'bai-viet',
-    [CatalogController::class, 'articles']
-)->name('catalog.articles');
-
-Route::get(
-    'bai-viet/{category_slug}',
-    [CatalogController::class, 'articleCategory']
-)->name('catalog.articleCategory');
-
-Route::get(
-    'bai-viet/{category_slug}/{post_slug}',
-    [CatalogController::class, 'article']
-)->name('catalog.article');
-
-Route::get(
-    'san-pham',
-    [CatalogController::class, 'products']
-)->name('catalog.products');
-
-Route::get(
-    'san-pham/{category_slug}',
-    [CatalogController::class, 'productCategory']
-)->name('catalog.productCategory');
-
-Route::get(
-    'san-pham/{category_slug}/{product_slug}',
-    [CatalogController::class, 'product']
-)->name('catalog.product');
-
-Route::get(
-    'loai/{slug}',
-    [CatalogController::class, 'getProductByGroup']
-)->name('catalog.product.getProductByGroup');
-
-Route::get('tim-kiem', [CatalogController::class, 'search'])->name('catalog.search');
-Route::post('quick_search', [CatalogController::class, 'quickSearch'])->name('catalog.quickSearch');
-
-Route::get(
-    'gallery/{id}',
-    [CatalogController::class, 'gallery']
-)->name('catalog.gallery');
-
-// Route::post(
-//     'set-session-installment',
-//     [CatalogController::class, 'setSessionInstallment']
-// )->name('catalog.setSessionInstallment');
+// Route::get(
+//     'bai-viet',
+//     [CatalogController::class, 'articles']
+// )->name('catalog.articles');
 
 // Route::get(
-//     'tra-gop',
-//     [CatalogController::class, 'installment']
-// )->name('catalog.installment');
+//     'bai-viet/{category_slug}',
+//     [CatalogController::class, 'articleCategory']
+// )->name('catalog.articleCategory');
+
+// Route::get(
+//     'bai-viet/{category_slug}/{post_slug}',
+//     [CatalogController::class, 'article']
+// )->name('catalog.article');
+
+// Route::get(
+//     'san-pham',
+//     [CatalogController::class, 'products']
+// )->name('catalog.products');
+
+// Route::get(
+//     'san-pham/{category_slug}',
+//     [CatalogController::class, 'productCategory']
+// )->name('catalog.productCategory');
+
+// Route::get(
+//     'san-pham/{category_slug}/{product_slug}',
+//     [CatalogController::class, 'product']
+// )->name('catalog.product');
+
+// Route::get(
+//     'loai/{slug}',
+//     [CatalogController::class, 'getProductByGroup']
+// )->name('catalog.product.getProductByGroup');
+
+// Route::get('tim-kiem', [CatalogController::class, 'search'])->name('catalog.search');
+// Route::post('quick_search', [CatalogController::class, 'quickSearch'])->name('catalog.quickSearch');
+
+// Route::get(
+//     'gallery/{id}',
+//     [CatalogController::class, 'gallery']
+// )->name('catalog.gallery');
+
+// // Route::post(
+// //     'set-session-installment',
+// //     [CatalogController::class, 'setSessionInstallment']
+// // )->name('catalog.setSessionInstallment');
+
+// // Route::get(
+// //     'tra-gop',
+// //     [CatalogController::class, 'installment']
+// // )->name('catalog.installment');
+
+// // Route::post(
+// //     'tien-gop-thang',
+// //     [CatalogController::class, 'tienGopThang']
+// // )->name('catalog.tienGopThang');
+
+// // Route::post(
+// //     'post-tra-gop',
+// //     [CatalogController::class, 'postTraGop']
+// // )->name('catalog.postTraGop');
+
+// Route::post('send_comment', [CatalogController::class, 'sendComment'])->name('catalog.sendComment');
+// Route::get('seller', [CatalogController::class, 'getSeller'])->name('catalog.getSeller');
+
+// // ================ Client Account Route ================ //
+// Route::get(
+//     'dang-nhap',
+//     [CatalogController::class, 'getClientLogin']
+// )->name('catalog.clientLogin');
 
 // Route::post(
-//     'tien-gop-thang',
-//     [CatalogController::class, 'tienGopThang']
-// )->name('catalog.tienGopThang');
+//     'login-user',
+//     [CatalogController::class, 'postClientLogin']
+// )->name('catalog.postClientLogin');
+
+// Route::get(
+//     'dang-ky',
+//     [CatalogController::class, 'getClientRegister']
+// )->name('catalog.getClientRegister');
 
 // Route::post(
-//     'post-tra-gop',
-//     [CatalogController::class, 'postTraGop']
-// )->name('catalog.postTraGop');
+//     'register',
+//     [CatalogController::class, 'postClientRegister']
+// )->name('catalog.postClientRegister');
 
-Route::post('send_comment', [CatalogController::class, 'sendComment'])->name('catalog.sendComment');
-Route::get('seller', [CatalogController::class, 'getSeller'])->name('catalog.getSeller');
+// Route::get(
+//     'dang-xuat',
+//     [CatalogController::class, 'getClientLogout']
+// )->name('catalog.getClientLogout');
 
-// ================ Client Account Route ================ //
-Route::get(
-    'dang-nhap',
-    [CatalogController::class, 'getClientLogin']
-)->name('catalog.clientLogin');
+// Route::prefix('tai-khoan')->middleware('userLogin')->group(function () {
+//     Route::get(
+//         'thong-tin',
+//         [ClientController::class, 'index']
+//     )->name('client.index');
 
-Route::post(
-    'login-user',
-    [CatalogController::class, 'postClientLogin']
-)->name('catalog.postClientLogin');
+//     Route::post(
+//         'edit-info',
+//         [ClientController::class, 'postEditInfo']
+//     )->name('client.postEditInfo');
 
-Route::get(
-    'dang-ky',
-    [CatalogController::class, 'getClientRegister']
-)->name('catalog.getClientRegister');
+//     Route::get(
+//         'doi-mat-khau',
+//         [ClientController::class, 'getResetPassword']
+//     )->name('client.getResetPassword');
 
-Route::post(
-    'register',
-    [CatalogController::class, 'postClientRegister']
-)->name('catalog.postClientRegister');
+//     Route::post(
+//         'reset-password',
+//         [ClientController::class, 'postResetPassword']
+//     )->name('client.postResetPassword');
 
-Route::get(
-    'dang-xuat',
-    [CatalogController::class, 'getClientLogout']
-)->name('catalog.getClientLogout');
-
-Route::prefix('tai-khoan')->middleware('userLogin')->group(function () {
-    Route::get(
-        'thong-tin',
-        [ClientController::class, 'index']
-    )->name('client.index');
-
-    Route::post(
-        'edit-info',
-        [ClientController::class, 'postEditInfo']
-    )->name('client.postEditInfo');
-
-    Route::get(
-        'doi-mat-khau',
-        [ClientController::class, 'getResetPassword']
-    )->name('client.getResetPassword');
-
-    Route::post(
-        'reset-password',
-        [ClientController::class, 'postResetPassword']
-    )->name('client.postResetPassword');
-
-    Route::get('don-hang', [ClientController::class, 'getInvoice'])->name('client.getInvoice');
-    Route::prefix('don-hang')->group(function () {
-        Route::get('chi-tiet/{invoiceId}', [ClientController::class, 'getInvoiceDetail'])->name('client.getInvoiceDetail');
-        Route::post('cancel_invoice', [ClientController::class, 'postCancelInvoice'])->name('client.postCancelInvoice');
-    });
+//     Route::get('don-hang', [ClientController::class, 'getInvoice'])->name('client.getInvoice');
+//     Route::prefix('don-hang')->group(function () {
+//         Route::get('chi-tiet/{invoiceId}', [ClientController::class, 'getInvoiceDetail'])->name('client.getInvoiceDetail');
+//         Route::post('cancel_invoice', [ClientController::class, 'postCancelInvoice'])->name('client.postCancelInvoice');
+//     });
     
-    Route::get(
-        'dia-chi',
-        [ClientController::class, 'getAddress']
-    )->name('client.getAddress');
+//     Route::get(
+//         'dia-chi',
+//         [ClientController::class, 'getAddress']
+//     )->name('client.getAddress');
 
-    Route::prefix('address')->group(function () {
-        Route::post(
-            'list',
-            [ClientController::class, 'addressList']
-        )->name('client.addressList');
+//     Route::prefix('address')->group(function () {
+//         Route::post(
+//             'list',
+//             [ClientController::class, 'addressList']
+//         )->name('client.addressList');
 
-        Route::post(
-            'add',
-            [ClientController::class, 'addAddress']
-        )->name('client.addAddress');
+//         Route::post(
+//             'add',
+//             [ClientController::class, 'addAddress']
+//         )->name('client.addAddress');
 
-        Route::get(
-            'edit/{addressId}',
-            [ClientController::class, 'getEdit']
-        )->name('client.address.getEdit');
+//         Route::get(
+//             'edit/{addressId}',
+//             [ClientController::class, 'getEdit']
+//         )->name('client.address.getEdit');
 
-        Route::post(
-            'edit',
-            [ClientController::class, 'postEditAddress']
-        )->name('client.address.postEditAddress');
+//         Route::post(
+//             'edit',
+//             [ClientController::class, 'postEditAddress']
+//         )->name('client.address.postEditAddress');
 
-        Route::post(
-            'delete',
-            [ClientController::class, 'deleteAddress']
-        )->name('client.deleteAddress');
-    });
-});
+//         Route::post(
+//             'delete',
+//             [ClientController::class, 'deleteAddress']
+//         )->name('client.deleteAddress');
+//     });
+// });
 
-Route::get('gio-hang',[CartController::class, 'getCartList'])->name('catalog.cart.getCartList');
-Route::prefix('gio-hang')->group(function () {
-    Route::post('cart', [CartController::class, 'postCart'])->name('catalog.cart.postCart');
-    Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('catalog.cart.addToCart');
-    Route::get('destroy', [CartController::class, 'getCartDestroy'])->name('catalog.cart.getCartDestroy');
-    Route::post('remove', [CartController::class, 'getCartRemove'])->name('catalog.cart.getCartRemove');
-    Route::post('update-cart', [CartController::class, 'postUpdateCart'])->name('catalog.cart.postUpdateCart');
-    Route::post('add_to_cart_option', [CartController::class, 'addToCartOption'])->name('catalog.cart.addToCartOption');
-});
-Route::get('dat-hang', [CartController::class, 'getOrder'])->name('catalog.cart.getOrder');
-Route::post('order', [CartController::class, 'order'])->name('catalog.cart.order');
+// Route::get('gio-hang',[CartController::class, 'getCartList'])->name('catalog.cart.getCartList');
+// Route::prefix('gio-hang')->group(function () {
+//     Route::post('cart', [CartController::class, 'postCart'])->name('catalog.cart.postCart');
+//     Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('catalog.cart.addToCart');
+//     Route::get('destroy', [CartController::class, 'getCartDestroy'])->name('catalog.cart.getCartDestroy');
+//     Route::post('remove', [CartController::class, 'getCartRemove'])->name('catalog.cart.getCartRemove');
+//     Route::post('update-cart', [CartController::class, 'postUpdateCart'])->name('catalog.cart.postUpdateCart');
+//     Route::post('add_to_cart_option', [CartController::class, 'addToCartOption'])->name('catalog.cart.addToCartOption');
+// });
+// Route::get('dat-hang', [CartController::class, 'getOrder'])->name('catalog.cart.getOrder');
+// Route::post('order', [CartController::class, 'order'])->name('catalog.cart.order');
 
-// ================ Admin Route ================ //
+// // ================ Admin Route ================ //
 Route::get(
     'auth',
     [UserController::class, 'getAdminLogin']

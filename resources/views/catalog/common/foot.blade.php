@@ -24,7 +24,7 @@
     const handleAddToCart2 = () => {
         $(document).on('click', '.add_to_cart', function(e) {
             e.preventDefault();
-            let ajaxCart = '{{ route("catalog.cart.addToCart") }}';
+            let ajaxCart = '{{ Illuminate\Support\Facades\Route::has('catalog.cart.addToCart') ? route('catalog.cart.addToCart') : '#' }}';
             $.post(ajaxCart, {
                 '_token': '{{ csrf_token() }}',
                 'product_id': $(this).attr("data-id"),
@@ -160,7 +160,7 @@
     }
 
     const handleUpdateCart2 = function (product_id = -1, quantity = -1, key = -1, elm = '') {
-        let ajaxCart = '{{ route("catalog.cart.postUpdateCart") }}';
+        let ajaxCart = '{{ Illuminate\Support\Facades\Route::has('catalog.cart.postUpdateCart') ? route('catalog.cart.postUpdateCart') : '#' }}';
         // Floating Cart
         let elmFloatInputQuantity = $(`#floating-cart .quantity-number[data-key=${key}]`),
             elmFloatButtonQuantity = elmFloatInputQuantity.parent().find('.quantity-button');
@@ -265,7 +265,7 @@
 
     const handleDeleteCart = function () {
         $(document).on('click', '.delete-cart', function () {
-            let ajaxCart = '{{ route("catalog.cart.getCartRemove") }}';
+            let ajaxCart = '{{ Illuminate\Support\Facades\Route::has('catalog.cart.getCartRemove') ? route('catalog.cart.getCartRemove') : '#' }}';
 
             let buttonDelete = $(this),
                 htmlButtonDelete = buttonDelete.html(),
@@ -440,7 +440,7 @@
     }
 
     const handleReRenderCart = () => {
-        $.post('{{ route("catalog.cart.postCart") }}', {'_token': '{{ csrf_token() }}'}, function (res) {
+        $.post('{{ Illuminate\Support\Facades\Route::has('catalog.cart.postCart') ? route('catalog.cart.postCart') : '#' }}', {'_token': '{{ csrf_token() }}'}, function (res) {
             if (res.status == 200) {
                 if (res.data.length > 0) {
                     let data = (res.data.list);
@@ -502,7 +502,7 @@
                 }
             });
         } else {
-            let urlOpenSearch ='{{ route("catalog.search") }}';
+            let urlOpenSearch ='{{ Illuminate\Support\Facades\Route::has('catalog.search') ? route('catalog.search') : '#' }}';
             location.href = urlOpenSearch+'?tukhoa='+valueSearch;
         }
     }
@@ -511,7 +511,7 @@
     const handleFrmSearchInput = function () {
         $('#frmSearch .frmSearch-input').keyup(function (event) {
             let valueSearch = $(this).val(),
-                urlSearch = '{{ route("catalog.quickSearch") }}',
+                urlSearch = '{{ Illuminate\Support\Facades\Route::has('catalog.quickSearch') ? route('catalog.quickSearch') : '#' }}',
                 eventKey = event.which || event.keyCode;
 
             if (eventKey === 13) {

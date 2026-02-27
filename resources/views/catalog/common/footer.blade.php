@@ -70,27 +70,27 @@
                         <div class="footer-title text-md-end">Chính sách & quy định</div>
                             <ul class="list-unstyled mb-0 footer-list text-md-end">
                                 <li>
-                                    <a href="{{ route('catalog.article', ['chinh-sach', 'bao-hanh-doi-tra']) }}">
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', ['chinh-sach', 'bao-hanh-doi-tra']) : '#' }}">
                                         <span>Bảo hành & Đổi trả</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('catalog.article', ['chinh-sach', 'chinh-sach-bao-mat']) }}">
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', ['chinh-sach', 'chinh-sach-bao-mat']) : '#' }}">
                                         <span>Chính sách bảo mật</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('catalog.article', ['chinh-sach', 'dat-hang-thanh-toan']) }}">
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', ['chinh-sach', 'dat-hang-thanh-toan']) : '#' }}">
                                         <span>Đặt hàng & Thanh toán</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('catalog.article', ['chinh-sach', 'van-chuyen-giao-hang']) }}">
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', ['chinh-sach', 'van-chuyen-giao-hang']) : '#' }}">
                                         <span>Vận chuyển & Giao hàng</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('catalog.article', ['chinh-sach', 'chinh-sach-hang-gia-hang-nhai']) }}">
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', ['chinh-sach', 'chinh-sach-hang-gia-hang-nhai']) : '#' }}">
                                         <span>Chính sách hàng giả, hàng nhái</span>
                                     </a>
                                 </li>
@@ -111,12 +111,12 @@
                 <div class="col-lg-6 mt-3 mt-lg-0">
                     <ul class="list-unstyled mb-0 footer-list text-md-end">
                         <li>
-                            <a href="{{ route('catalog.article', ['sitemap', 'so-do-website']) }}">
+                            <a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', ['sitemap', 'so-do-website']) : '#' }}">
                                 <span>Sơ đồ Website</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('catalog.article', ['lien-he', 'lien-he']) }}">
+                            <a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', ['lien-he', 'lien-he']) : '#' }}">
                                 <span>Liên hệ</span>
                             </a>
                         </li>

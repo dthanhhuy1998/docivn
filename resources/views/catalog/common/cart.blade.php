@@ -57,10 +57,10 @@
                 Phí vận chuyển sẽ được tính khi giao hàng
             </div>
             <div class="card-buttons">
-                <a href="{{ route('catalog.cart.getCartList') }}" class="button-theme button-theme_secondary" data-title="Xem giỏ hàng">
+                <a href="{{ Illuminate\Support\Facades\Route::has('catalog.cart.getCartList') ? route('catalog.cart.getCartList') : '#' }}" class="button-theme button-theme_secondary" data-title="Xem giỏ hàng">
                     <span>Xem giỏ hàng</span>
                 </a>
-                <a href="{{ route('catalog.cart.getOrder') }}" class="button-theme button-theme_primary" data-title="Đặt mua ngay">
+                <a href="{{ Illuminate\Support\Facades\Route::has('catalog.cart.getOrder') ? route('catalog.cart.getOrder') : '#' }}" class="button-theme button-theme_primary" data-title="Đặt mua ngay">
                     <span>Đặt mua ngay</span>
                 </a>
             </div>
@@ -75,6 +75,6 @@
 <a @if(!empty($zalo)) href="https://zalo.me/{{ $zalo }}" target="_blank" @else href="#" onclick="return false;" @endif class="button-zalo" >
     <img src="https://nongsankhaianh.com/wp-content/uploads/2021/10/icon-zalo.png" alt="zalo">
 </a> 
-<a href="{{ route('catalog.cart.getCartList') }}" class="button-return is-show">
+<a href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.cart.getCartList') : '#' }}" class="button-return is-show">
     <i class="fas fa-shopping-cart"></i>
 </a>-->

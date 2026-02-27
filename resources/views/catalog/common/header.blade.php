@@ -37,13 +37,13 @@
                         <div class="header-user_dropdown">
                             @if(!session()->exists('userLogin'))
                                 <div class="button">
-                                    <a href="{{ route('catalog.clientLogin') }}" class="button-theme button-theme_primary" data-title="Đăng nhập">
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.clientLogin') ? route('catalog.clientLogin') : '#' }}" class="button-theme button-theme_primary" data-title="Đăng nhập">
                                         <span>Đăng nhập</span>
                                     </a>
                                 </div>
                                 <div class="text">
                                     Khách mới?
-                                    <a href="{{ route('catalog.getClientRegister') }}">Đăng ký</a>
+                                    <a href="{{ Illuminate\Support\Facades\Route::has('catalog.getClientRegister') ? route('catalog.getClientRegister') : '#' }}">Đăng ký</a>
                                 </div>
                             @else
                                 <ul class="list-unstyled mb-0">
@@ -100,13 +100,13 @@
                         <a class="navigation-link" href="{{ route('catalog.homepage') }}">Trang chủ</a>
                     </li>
                     <li class="navigation-item">
-                        <a class="navigation-link" href="{{ route('catalog.article', ['gioi-thieu', 'gioi-thieu']) }}">Giới thiệu</a>
+                        <a class="navigation-link" href="{{ Illuminate\Support\Facades\Route::has('catalog.article') ? route('catalog.article', ['gioi-thieu', 'gioi-thieu']) : '#' }}">Giới thiệu</a>
                     </li>
                     <li class="navigation-item">
                         <a class="navigation-link" @if(request()->is('/')) href="#activity" @else href="{{ route('catalog.homepage') }}#activity" @endif>Hoạt động</a>
                     </li>
                     <li class="navigation-item">
-                        <a class="navigation-link" href="{{ route('catalog.article', ['chinh-sach', 'quy-dinh']) }}">Quy định</a>
+                        <a class="navigation-link" href="{{ Illuminate\Support\Facades\Route::has('catalog.article') ? route('catalog.article', ['chinh-sach', 'quy-dinh']) : '#' }}">Quy định</a>
                     </li>
                     <li class="navigation-item">
                         <a class="navigation-link" href="javascript:;">
@@ -115,9 +115,9 @@
                         </a>
                         @if(count($categories) > 0)
                             <ul class="list-unstyled mb-0 navigation-sub">
-                                <li><a href="{{ route('catalog.products') }}" title="Tất cả sản phẩm">Tất cả sản phẩm</a></li>
+                                <li><a href="{{ Illuminate\Support\Facades\Route::has('catalog.products') ? route('catalog.products') : '#' }}" title="Tất cả sản phẩm">Tất cả sản phẩm</a></li>
                                 @foreach($categories as $root)
-                                    <li><a href="{{ route('catalog.productCategory', $root->slug) }}">{{ $root->name }}</a></li>
+                                    <li><a href="{{ Illuminate\Support\Facades\Route::has('catalog.productCategory') ? route('catalog.productCategory', $root->slug) : '#' }}">{{ $root->name }}</a></li>
                                 @endforeach
                             </ul>
                         @endif
