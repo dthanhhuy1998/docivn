@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-white" id="new-product">
+    <div class="" id="new-product">
         <div class="section-gap section-article" style="padding: 100px 0 0 0;">
             <div class="container">
                 <div class="row">

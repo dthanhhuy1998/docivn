@@ -302,7 +302,13 @@
 
 .header {
     position: relative;
-    background-color: var(--gray-900);
+    background: linear-gradient(
+        to bottom,
+        #b18b79 0%,
+        #9c7260 45%,
+        #6e4d3f 75%,
+        #4a3329 100%
+    );
 }
 
 .header .header-inner {
@@ -337,7 +343,16 @@
     justify-content: center;
     align-items: flex-start;
     animation: logo-animation 5s infinite reverse;
-    background: linear-gradient(to top left, #83501A 8%, #FFFEA8 77%);
+    background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #f2f2f2 20%,
+        #dddddd 35%,
+        #ffffff 50%,
+        #e8e8e8 65%,
+        #ffffff 80%,
+        #d9d9d9 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -6638,4 +6653,8 @@ span#fcta-zalo-tracking{
 }
 .fcta-zalo-text{
     font-family:Roboto
+}
+
+.section-main {
+    background: var(--bg-primary);
 }
