@@ -174,7 +174,7 @@
                                             <div class="text">
                                                 <div class="title">
                                                     <div class="line"></div>
-                                                    THÔNG TIN SẢN PHẨM                                          
+                                                    <span style="text-transform: uppercase; color: #222;">{{__('Product Description')}}</span>                                         
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@
                                             <div class="text">
                                                 <div class="title">
                                                     <div class="line"></div>
-                                                    THÔNG TIN CHI TIẾT                                            
+                                                    <span style="text-transform: uppercase; color: #222;">{{__('Product Information')}}</span>                                            
                                                 </div>
                                             </div>
                                         </div>
@@ -196,7 +196,7 @@
                                             <div class="text">
                                                 <div class="title">
                                                     <div class="line"></div>
-                                                    THÔNG TIN VÀ CHÍNH SÁCH                                            
+                                                    <span style="text-transform: uppercase; color: #222;">{{__('Use Guide')}}</span>                                    
                                                 </div>
                                             </div>
                                         </div>

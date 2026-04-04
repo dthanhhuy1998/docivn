@@ -55,11 +55,11 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả ngắn</label>
+                                    <label>{{__('Product Description')}}</label>
                                     <textarea name="description" rows="8" class="form-contror" id="editor2" placeholder="Nhập mô tả">{{ $product->productDescription->description }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Chi tiết sản phẩm</label>
+                                    <label>{{__('Product Information')}}</label>
                                     <textarea name="detail" rows="8" class="form-control" id="editor1" placeholder="Nhập nội dung bài viết">{{ $product->productDescription->detail }}</textarea>
                                 </div>
                                 <div class="form-group @error('metaTitle') has-error @enderror">
