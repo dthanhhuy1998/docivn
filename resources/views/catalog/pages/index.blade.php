@@ -93,7 +93,7 @@
                                 <div class="swiper-wrapper">
                                     @foreach($slideProducts as $slide)
                                         <div class="swiper-slide">
-                                            <a href="{{ $slide->slide_link }}" data-fancybox="" data-caption="{{ $slide->slide_title }}" data-fancybox-index="1">
+                                            <a href="{{ $slide->slide_link ?? '#' }}" data-fancybox="" data-caption="{{ $slide->slide_title }}" data-fancybox-index="1">
                                                 <img src="{{ asset('storage/app/'.$slide->slide_image) }}" class="w-100" alt="{{ $slide->slide_title }}">
                                             </a>
                                         </div>

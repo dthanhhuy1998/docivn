@@ -269,16 +269,18 @@
 <script src="{{ asset('public/admin/assets/bower_components/ckeditor/ckeditor.js') }}"></script>
 <script>
     $(function () {
+        let __token = $('meta[name="csrf-token"]').attr('content');
+
         // Initialize Select2 Elements
         $('.select2').select2();
 
         // Editor
         $('.textarea').wysihtml5();
         var options = {
-            filebrowserImageBrowseUrl: '{{ config("app.url") }}admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '{{ config("app.url") }}admin/laravel-filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '{{ config("app.url") }}admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '{{ config("app.url") }}admin/laravel-filemanager/upload?type=Files&_token='
+            filebrowserImageBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Images&_token=' + __token,
+            filebrowserBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Files&_token=' + __token
         };
         CKEDITOR.replace('editor1', options);
         CKEDITOR.replace('editor2', options);

@@ -130,10 +130,10 @@
         // Editor
         $('.textarea').wysihtml5()
         var options = {
-            filebrowserImageBrowseUrl: '{{ config("app.url") }}admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '{{ config("app.url") }}admin/laravel-filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '{{ config("app.url") }}admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '{{ config("app.url") }}admin/laravel-filemanager/upload?type=Files&_token='
+            filebrowserImageBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Files&_token='
         };
         CKEDITOR.replace('editor1', options);
     })
