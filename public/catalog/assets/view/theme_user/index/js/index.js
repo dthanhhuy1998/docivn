@@ -2,15 +2,24 @@
     'use strict';
     new WOW().init();
     const handleSliderHero = function () {
-        new Swiper('#slider-hero .swiper', {
+        new Swiper('.slider-hero .swiper', {
             speed: 1000,
             slidesPerView: 1,
             preloadImages: false,
             effect: 'slide',
-            loop: false,
+            loop: true,
+            autoplay: {
+                delay: 3000, // 3s chuyển slide
+                disableOnInteraction: false, // user click vẫn auto tiếp
+                pauseOnMouseEnter: true // hover thì pause
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
             navigation: {
-                nextEl: '#slider-hero .button-next',
-                prevEl: '#slider-hero .button-prev',
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
         });
     }

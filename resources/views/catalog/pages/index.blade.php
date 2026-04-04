@@ -22,9 +22,9 @@
                 <div class="slider-theme slider-hero" id="slider-hero">
                     <div class="swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/R1vCdi0YSoc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
+                            </div> --}}
                             @if(count($slides) > 0)
                                 @foreach($slides as $slide)
                                     <div class="swiper-slide">
@@ -35,6 +35,9 @@
                                 @endforeach
                             @endif
                         </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                     {{-- <div class="slider-button button-prev button-theme button-theme_primary">
                         <span>PREVIOUS</span>
@@ -50,9 +53,9 @@
         <div class="slider-theme slider-hero" id="slider-hero">
             <div class="swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    {{-- <div class="swiper-slide">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/R1vCdi0YSoc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
+                    </div> --}}
                     @if(count($slides) > 0)
                         @foreach($slides as $slide)
                             <div class="swiper-slide">
@@ -63,6 +66,9 @@
                         @endforeach
                     @endif
                 </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
             <div class="slider-button button-prev button-theme button-theme_primary">
                 <span>PREVIOUS</span>
