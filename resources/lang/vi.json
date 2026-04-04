@@ -1,0 +1,26 @@
+{
+    "Dashboard": "Bảng điều khiển",
+    "Config": "Cấu hình",
+    "General": "Chung",
+    "Interface": "Giao diện",
+    "Social": "Mạng xã hội",
+    "Other": "Khác",
+    "Title": "Tiêu đề",
+    "Logo Footer": "Logo chân trang",
+    "Description": "Mô tả",
+    "Keyword": "Từ khoá",
+    "Footer Content": "Nội dung chân trang",
+    "Number Phone": "Số điện thoại",
+    "Copyright": "Bản quyền",
+    "All the code below will be installed at the bottom of the tag": "Tất cả đoạn mã bên dưới sẽ được cài đặt ở cuối thẻ",
+    "Paste the <script> here": "Dán thẻ <script> ở đây",
+    "Mail Receiver Feedback": "Mail nhận Feedback",
+    "Save Config": "Lưu cấu hình",
+    "Settings saved successfully": "Lưu thiết lập thành công",
+    "Success": "Thành công",
+    "Warning": "Cảnh báo",
+    "Error": "Lỗi",
+    "Failed": "Thất bại",
+
+    "Enter :field": "Nhập :field"
+}

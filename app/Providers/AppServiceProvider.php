@@ -12,6 +12,8 @@ use App\Models\ProductGroup;
 use App\Models\Customer;
 use App\Models\Partner;
 use App\Models\Config;
+use App\Services\Config\ConfigService;
+use App\Helpers\AnalyticsHelper;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,37 +32,32 @@ class AppServiceProvider extends ServiceProvider
     {
         // Catalog
         View::composer('catalog.common.head', function ($view) {
-            $favicon = asset('storage/app/'.$this->configModel->getConfig('favicon'));
-            $codeHeader = $this->configModel->getConfig('code_header');
+            $configService = app(ConfigService::class);
 
             $view->with([
-                'favicon'       => $favicon,
-                'code_header'   => $codeHeader
+                'siteConfig' => $configService->getAllConfigs(),
             ]);
         });
 
         View::composer('catalog.common.header', function ($view) {
             $categories = ProductCategory::where('status', 1)
-            ->where('parent_id', 0)
-            ->where('id', '<>', 1)
-            ->orderBy('sort_order', 'asc')
-            ->get();
-            $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+                ->where('parent_id', 0)
+                ->where('id', '<>', 1)
+                ->orderBy('sort_order', 'asc')
+                ->get();
 
-            if(!session()->exists('userLogin')) {
-                $view->with([
-                    'categories'    => $categories,
-                    'logo'          => $logo
-                ]);
-            } else {
-                $userLogin = Customer::select('firstname', 'lastname')->where('email', session()->get('userLogin'))->first();
+            $configService = app(ConfigService::class);
+            $logo = $configService->get('logo') ? 'public/storage/' .$configService->get('logo') : 'public/images/no-image.png';
+            $logoTagLine = $configService->get('logo_tagline') ? 'public/storage/' .$configService->get('logo_tagline') : 'public/images/no-image.png';
 
-                $view->with([
-                    'userLogin'     => $userLogin,
-                    'categories'    => $categories,
-                    'logo'          => $logo
-                ]);
-            }
+            $userLogin = Customer::select('firstname', 'lastname')->where('email', session()->get('userLogin'))->first();
+
+            $view->with([
+                'categories'    => $categories,
+                'logo'          => $logo,
+                'logoTagLine'   => $logoTagLine,
+                'userLogin'     => $userLogin
+            ]);
         });
 
         View::composer('catalog.common.sidebar', function ($view) {
@@ -76,7 +73,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('catalog.common.cart', function ($view) {
-            $zalo = $this->configModel->getConfig('zalo');
+            $configService = app(ConfigService::class);
+            $zalo = $configService->get('zalo') ?? '';
 
             $view->with([
                 'zalo'   => $zalo
@@ -84,71 +82,33 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('catalog.common.footer', function ($view) {
-            $contact = $this->configModel->getConfig('contact');
-            $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
-            $copyright = $this->configModel->getConfig('copyright');
-            $phone = $this->configModel->getConfig('phone');
-            // social
-            $gmail = $this->configModel->getConfig('gmail');
-            $facebook = $this->configModel->getConfig('facebook');
-            $youtube = $this->configModel->getConfig('youtube');
-            $zalo = $this->configModel->getConfig('zalo');
-            $instagram = $this->configModel->getConfig('instagram');
-            $tiktok = $this->configModel->getConfig('tiktok');
-            $twitter = $this->configModel->getConfig('twitter');
-
-            $ramdomUserOnline = $this->randomUserOnline();
+            $configService = app(ConfigService::class);
+            $siteConfig = $configService->getAllConfigs();
 
             $view->with([
-                'contact'           => $contact,
-                'logo'              => $logo,
-                'copyright'         => $copyright,
-                'phone'             => $phone,
-                'gmail'             => $gmail,
-                'facebook'          => $facebook,
-                'youtube'           => $youtube,
-                'zalo'              => $zalo,
-                'instagram'         => $instagram,
-                'tiktok'            => $tiktok,
-                'twitter'           => $twitter,
-                'ramdomUserOnline'  => $ramdomUserOnline
+                'siteConfig'        => $siteConfig,
+                'ramdomUserOnline'  => AnalyticsHelper::randomUserOnline(),
+                'siteConfig'        => $siteConfig
             ]);
         });
 
         View::composer('catalog.common.foot', function ($view) {
-            $codeFooter = $this->configModel->getConfig('code_footer');
+            $configService = app(ConfigService::class);
+            $codeFooter = $configService->get('code_footer');
 
             $view->with([
-                'code_footer'   => $codeFooter
+                'code_footer' => $codeFooter
             ]);
         });
 
         // Admin
         View::composer('admin.common.head', function ($view) {
-            $favicon = asset('storage/app/'.$this->configModel->getConfig('favicon'));
+            $configService = app(ConfigService::class);
+            $favicon = $configService->get('favicon') ? asset('public/storage/' .$configService->get('favicon')) : 'public/images/no-image.png';
 
             $view->with([
                 'favicon'   => $favicon
             ]);
         });
-    }
-
-    public function randomUserOnline() {
-        $session = date('h:i A', strtotime(date('Y-m-d H:i:s')));
-        $time = new \DateTime($session); 
-        $data = substr($time->format('H:i'), 0, 2);
-        
-        $userOnline = 0;
-        if($data < 24) {
-            $userOnline = rand(100, 200);
-        }
-        if($data < 23) {
-            $userOnline = rand(200, 750);
-        }
-        if($data < 11) {
-            $userOnline = rand(100, 200);
-        }
-
-        return $userOnline;
     }
 }

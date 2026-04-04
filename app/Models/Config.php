@@ -11,9 +11,15 @@ class Config extends Model
 
     protected $table = 'configs';
 
+    protected $fillable = ['config_key', 'config_value'];
+
+    public $timestamps = false;
+
     // Functions
     public function getConfig($key) {
         $config = Config::select('config_value')->where('config_key', $key)->first();
+        if(!$config) return '';
+
         return $config->config_value;
     }
 }

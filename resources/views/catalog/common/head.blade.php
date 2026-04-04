@@ -9,7 +9,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<link rel="shortcut icon" type="image/png" href="{{ $favicon }}"/>
+<link rel="shortcut icon" type="image/png" href="{{ isset($siteConfig['favicon']) ? asset('public/storage/'. $siteConfig['favicon']) : 'public/images/no-image.png' }}"/>
 <noscript>
   <style>
       body {
@@ -45,4 +45,4 @@
 <link href="{{ asset('public/catalog/assets/view/theme_user/assets/css/base.css') }}" type="text/css" rel="stylesheet"/>
 <link href="{{ asset('public/catalog/assets/view/theme_user/assets/css/style.css') }}" type="text/css" rel="stylesheet"/>
 
-{!! $code_header !!}
+{!! $siteConfig['code_header'] ?? '' !!}

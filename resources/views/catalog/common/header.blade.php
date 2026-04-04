@@ -5,12 +5,10 @@
                 <div class="header-bar-left">
                     <a href="{{ route('catalog.homepage') }}" class="header-logo">
                         <div class="header-logo-img">
-                            <img src="{{$logo}}" alt="{{$logo}}" class="img-fuild">
+                            <img src="{{$logo}}" alt="Logo DOCI PERFUME" class="img-fuild">
                         </div>
                         <div class="doci-slogan">
-                            <span class="solid">DOCI PERFUME</span>
-                            <span>Chọn đẳng cấp, chọn chúng tôi</span>
-                            <span>Chọn độc đáo, chọn DOCI</span>
+                            <img src="{{$logoTagLine}}" alt="Logo tagline DOCI PERFUME" width="180" class="img-fuild">
                         </div>
                     </a>
                 </div>
