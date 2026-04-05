@@ -32,6 +32,7 @@
     --size-sub: .95em;
     --size-small: .9em;
     --aspect-ratio-1000x556: calc((556 / 1000) * 100%);
+    --header-height: 96px;
 }
 
 @font-face {
