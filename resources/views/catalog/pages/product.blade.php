@@ -192,14 +192,14 @@
                                         <div class="font-theme pb-3">
                                             {!! $productDescription->description !!}
                                         </div>
-                                        <div class="section-heading_highlight">
+                                        {{-- <div class="section-heading_highlight">
                                             <div class="text">
                                                 <div class="title">
                                                     <div class="line"></div>
                                                     <span style="text-transform: uppercase; color: #222;">{{__('Use Guide')}}</span>                                    
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         @if(!empty($phone))
                                             {{-- <div class="description-sidebar_contact">
                                                 <div class="icon">
@@ -211,7 +211,7 @@
                                                 </div>
                                             </div> --}}
                                         @endif
-                                        <div class="description-sidebar_collapse" id="description-sidebar_collapse">
+                                        {{-- <div class="description-sidebar_collapse" id="description-sidebar_collapse">
                                             <div class="collapse-item">
                                                 <a href="#collapse-item_2"
                                                     data-bs-toggle="collapse"
@@ -229,7 +229,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
