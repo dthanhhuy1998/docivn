@@ -5,10 +5,10 @@
                 <div class="header-bar-left">
                     <a href="{{ route('catalog.homepage') }}" class="header-logo">
                         <div class="header-logo-img">
-                            <img src="{{$logo}}" alt="Logo DOCI PERFUME" class="img-fuild">
+                            <img src="{{asset($logo)}}" alt="Logo DOCI PERFUME" class="img-fuild">
                         </div>
                         <div class="doci-slogan">
-                            <img src="{{$logoTagLine}}" alt="Logo tagline DOCI PERFUME" width="180" class="img-fuild">
+                            <img src="{{asset($logoTagLine)}}" alt="Logo tagline DOCI PERFUME" width="180" class="img-fuild">
                         </div>
                     </a>
                 </div>
