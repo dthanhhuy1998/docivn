@@ -1314,13 +1314,14 @@
     background-color: transparent;
     border-bottom: 0;
     border-radius: 0;
+    min-height: 310px;
 }
 
 .product-card .card-header > a {
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 448px;
+    min-height: 100%;
     border: 1px solid var(--primary-color);
 }
 
@@ -6274,7 +6275,7 @@ body.js-show_cart {
 }
 .find-seller-form button {
     font-weight: 500 !important;
-    background-color: #0B0B45 !important;
+    background-color: var(--gray-900) !important;
     color: #fff;
     fill: #fff;
     font-size: 15px;
@@ -6284,6 +6285,11 @@ body.js-show_cart {
     outline: none;
     border-radius: 3px;
 }
+
+.find-seller-form button:hover {
+    background-color: var(--gray-800) !important;
+}
+
 /* Comments */
 .section-comments {
     min-height: 60vh;
@@ -6331,11 +6337,16 @@ body.js-show_cart {
     padding: calc(0.5 * 20px);
     border: none;
     outline: none;
-    background-color: #0b0b45;
+    background-color: var(--gray-900);
     color: #fff;
     border-radius: 3px;
     font-size: 15px;
 }
+
+.form-comments button:hover {
+    background-color: var(--gray-800);
+}
+
 .form-comments .form-action button i {
     margin-right: 3px;
 }
@@ -6352,7 +6363,7 @@ body.js-show_cart {
     border-top-right-radius: 3px;
     background-color: #ffe668;
     padding: 10px 15px 9px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #0B0B45;
     display: block;
     transition: all 0.3s ease;
@@ -6653,4 +6664,8 @@ span#fcta-zalo-tracking{
 
 .section-main {
     background: var(--bg-primary);
+}
+
+.footer-desc {
+    font-family: 'Raleway', sans-serif;
 }

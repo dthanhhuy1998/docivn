@@ -100,7 +100,7 @@
                                                 <h1 class="detail-information_title">{{ $productDescription->name }}</h1>
                                                 <div class="detail-information_categories">
                                                     Đã bán:
-                                                    <span>{{ $productDescription->product->sold }}</span>
+                                                    <span>{{!empty($productDescription->product->sold) ? $productDescription->product->sold : 1000 }}</span>
                                                 </div>
                                                 <div class="detail-information_categories">
                                                     Danh mục:
@@ -211,25 +211,25 @@
                                                 </div>
                                             </div> --}}
                                         @endif
-                                        {{-- <div class="description-sidebar_collapse" id="description-sidebar_collapse">
+                                        <div class="description-sidebar_collapse" id="description-sidebar_collapse">
                                             <div class="collapse-item">
                                                 <a href="#collapse-item_2"
                                                     data-bs-toggle="collapse"
                                                     class="collapse-item_button"
                                                     aria-expanded="true">
-                                                    CAM KẾT BÁN HÀNG
+                                                    {{__('Commitment to Sales')}}
                                                     <i class="fal fa-angle-down"></i>
                                                 </a>
                                                 <div class="collapse show" id="collapse-item_2" data-bs-parent="#description-sidebar_collapse">
                                                     <div class="collapse-item_content">
-                                                        <p><meta charset="utf-8" /><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" />&nbsp;Sản ph&acirc;̉m chính hãng</p>
-                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" />&nbsp;Đúng ti&ecirc;u chu&acirc;̉n</p>
-                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" />&nbsp;Đúng ch&acirc;́t lượng</p>
-                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" />&nbsp;Được bảo hành chính hãng</p>
+                                                        <p><meta charset="utf-8" /><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
+                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
+                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
+                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -525,7 +525,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="section-heading">
-                                            <div class="title">Sản phẩm liên quan</div>
+                                            <div class="title">{{__('Related Products')}}</div>
                                         </div>
                                         @if(count($relatedProducts) > 0)
                                             <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 g-3">
@@ -534,7 +534,7 @@
                                                         <div class="product-card card">
                                                             <div class="card-header">
                                                                 <a class="card-image ratio ratio-1x1" title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">
-                                                                    <img src="@if(!empty($product->product_image)) {{ asset('storage/app/'.$product->product_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="250px" width="250px" alt="{{ $product->product_name }}">
+                                                                    <img src="@if(!empty($product->product_image)) {{ asset('storage/app/'.$product->product_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="{{ $product->product_name }}">
                                                                 </a>
                                                             </div>
                                                             <div class="card-body">
@@ -543,8 +543,8 @@
                                                                 </div>
                                                                 <div class="card-bottom">
                                                                     <div class="card-view">
-                                                                        <a title="Chi tiết {{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}" class="button-theme button-theme_primary button-view">
-                                                                            <span>Chi tiết</span>
+                                                                        <a title="{{__('Detail')}} {{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}" class="button-theme button-theme_primary button-view">
+                                                                            <span>{{__('Detail')}}</span>
                                                                         </a>
                                                                         <a 
                                                                             href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}" 
@@ -553,9 +553,9 @@
                                                                         >
                                                                             <span>
                                                                                 @if($product->product_price > 0)
-                                                                                    <ins>{{ number_format($product->product_price) }}đ</ins>
+                                                                                    <b>{{ number_format($product->product_price) }}đ</b>
                                                                                 @else
-                                                                                    <ins>Liên hệ</ins>
+                                                                                    <b>{{__('Contact')}}</b>
                                                                                 @endif
                                                                             </span>
                                                                         </a>

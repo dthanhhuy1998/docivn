@@ -30,7 +30,6 @@
                         <div class="footer-logo">
                             <img height="50px" width="130px" class="w-100 img-fluid transition-default" src="{{ asset('public/storage/' .$siteConfig['logo_footer']) }}" alt="{{$siteConfig['logo_footer'] ?? ''}}">
                         </div>
-                        <div class="footer-title footer-title_big">DOCI Perfume</div>
                         <div class="footer-desc text-white">
                             {!! $siteConfig['footer_content'] ?? '' !!}
                         </div>  
