@@ -17,7 +17,7 @@
 @section('content')
 <div class="section-main slide-pd-0">
     <div class="d-none d-lg-block">
-        <div class="container">
+        <div class="container-fluid p-0">
             <div class="col-md-12 col-lg-12 col-xs-12">
                 <div class="slider-theme slider-hero" id="slider-hero">
                     <div class="swiper">
