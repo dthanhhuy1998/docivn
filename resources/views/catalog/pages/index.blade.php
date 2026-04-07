@@ -122,7 +122,7 @@
             @endphp
             @if(count($productToCategory) > 0)
                 <div class="section-category bg-white-light" style="padding-top: 20px;">
-                    <div class="container">
+                    <div class="container-fuild">
                         <div class="row">
                             <div class="col-lg-12 col-xs-12 col-md-12">
                                 <div class="section-heading2">
@@ -133,10 +133,15 @@
                             <div class="col-lg-12 col-xs-12 col-md-12">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-xs-12" style="padding-bottom: 35px;">
-                                        <div class="bg-fixed" style="background-image: url('@if(!empty($category->image)) {{ asset('storage/app/'.$category->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif');"></div>
+                                        <div class="bg-scroll" style="background-image: url('@if(!empty($category->image)) {{ asset('storage/app/'.$category->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif');"></div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
                             <div class="col-lg-12 col-xs-12 col-md-12">
                                 <div class="row" style="justify-content: center;">
                                     @foreach($productToCategory as $item)
@@ -475,7 +480,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-xs-6 col-lg-12 col-xs-12 col-md-12 content-center">
                         <h2>
-                            <span class="text-blue-bold content-center font-42 font-w-600">
+                            <span class="content-center font-42 font-w-600">
                                <span align="center">Đóng góp ý kiến để chúng tôi được phục vụ bạn tốt hơn</span>
                             </span>
                         </h2>
@@ -516,7 +521,7 @@
             <div class="row">
                 <div class="col-lg-6 col-xs-6 col-lg-12 col-xs-12 col-md-12">
                     <h2>
-                        <span class="text-blue-bold content-center font-40 font-w-600">
+                        <span class="content-center font-40 font-w-600">
                             Tra cứu seller
                         </span>
                     </h2>
@@ -651,11 +656,11 @@
 
     $(function() {
         if(/iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
-            $('.bg-fixed').addClass('ios');
+            $('.bg-scroll').addClass('ios');
         }
         $(window).scroll(function() {
             var fromtop = $(this).scrollTop();
-            $(".bg-fixed-mobile").css({"background-position-y": fromtop+"px"});
+            $(".bg-scroll-mobile").css({"background-position-y": fromtop+"px"});
         });
 
         sendComment();
