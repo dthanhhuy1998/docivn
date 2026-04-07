@@ -46,7 +46,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="card-title">
-                                                    <a title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">{{ $product->product_name }}</a>
+                                                    <a title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}"><b>{{ $product->product_name }}</b></a>
                                                 </div>
                                                 <div class="card-bottom">
                                                     <div class="card-view">

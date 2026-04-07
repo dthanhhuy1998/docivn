@@ -100,7 +100,7 @@
                                                 <h1 class="detail-information_title">{{ $productDescription->name }}</h1>
                                                 <div class="detail-information_categories">
                                                     Đã bán:
-                                                    <span>{{!empty($productDescription->product->sold) ? $productDescription->product->sold : 1000 }}</span>
+                                                    <span>{{!empty($productDescription->product->sold) ? $productDescription->product->sold : '' }}</span>
                                                 </div>
                                                 <div class="detail-information_categories">
                                                     Danh mục:
@@ -539,7 +539,7 @@
                                                             </div>
                                                             <div class="card-body">
                                                                 <div class="card-title">
-                                                                    <a title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">{{ $product->product_name }}</a>
+                                                                    <a title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}"><b>{{ $product->product_name }}</b></a>
                                                                 </div>
                                                                 <div class="card-bottom">
                                                                     <div class="card-view">

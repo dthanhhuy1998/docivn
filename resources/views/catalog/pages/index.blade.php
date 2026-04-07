@@ -154,7 +154,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="card-title">
-                                                        <a title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}">{{ $item->product->productDescription->name }}</a>
+                                                        <a title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}"><b>{{ $item->product->productDescription->name }}</b></a>
                                                     </div>
                                                     <div class="card-bottom">
                                                         <div class="card-view">
@@ -183,7 +183,7 @@
                             @if($category->slug != 'tester')
                                 <div class="col-lg-12 col-xs-12 col-md-12 content-center mt-5">
                                     <a class="button-theme button-theme_secondary" href="{{ Illuminate\Support\Facades\Route::has('catalog.productCategory') ? route('catalog.productCategory', $category->slug) : '#' }}" title="Xem thêm về {{ $category->name }}" data-title="Xem thêm">
-                                        <span>Xem thêm</span>
+                                        <span>{{__('Explore More')}}</span>
                                     </a>
                                 </div>
                             @endif
@@ -193,6 +193,7 @@
             @endif
         @endforeach
     @endif
+
     <div class="bg-activity" id="activity">
         <div class="section-gap section-article" style="padding: 100px 0 0 0;">
             <div class="container">
@@ -207,14 +208,14 @@
         </div>
         <div class="section-gap section-article" style="padding: 0 0 25px 0;">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-xs-12 col-md-12">
-                        <div class="section-heading">
-                            <div class="title">Hình ảnh nổi bật</div>
+                @if(!empty($activityPosts))
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12 col-md-12">
+                            <div class="section-heading">
+                                <div class="title">Hình ảnh nổi bật</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12 col-xs-12 col-md-12">
-                        @if(!empty($activityPosts))
+                        <div class="col-lg-12 col-xs-12 col-md-12">
                             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper swiper-activity">
                                 <div class="swiper-wrapper">
                                     @php $count = 0; @endphp
@@ -229,7 +230,7 @@
                                 </div>
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
-                             </div>
+                                </div>
                             <div thumbsSlider="" class="swiper swiper-activity-thumb">
                                 <div class="swiper-wrapper">
                                     @foreach($activityPosts as $post)
@@ -239,17 +240,19 @@
                                     @endforeach
                                 </div>
                             </div>
-                        @endif
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-xs-12 col-md-12">
-                        <div class="section-heading mt-5">
-                            <div class="title">Album ảnh</div>
                         </div>
                     </div>
-                </div>
+                @endif
+                
                 @if(count($albums) > 0)
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12 col-md-12">
+                            <div class="section-heading mt-5">
+                                <div class="title">Album ảnh</div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="gallery-box">
                         <div class="row">
                             @foreach($albums as $image)
@@ -270,15 +273,17 @@
                 @endif
             </div>
         </div>
-        <div class="section-gap section-article" style="padding: 0 0 40px 0;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-xs-12 col-md-12">
-                        <div class="section-heading">
-                            <div class="title">Video</div>
+
+        @if(count($videos) > 0)
+            <div class="section-gap section-article" style="padding: 0 0 40px 0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12 col-md-12">
+                            <div class="section-heading">
+                                <div class="title">Video</div>
+                            </div>
                         </div>
-                    </div>
-                    @if(count($videos) > 0)
+                        
                         <div class="col-lg-12 col-xs-12 col-md-12">
                             <div class="row">
                                 <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
@@ -310,10 +315,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                        
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
     <div class="section-gap section-article bg-white-light" id="blog">
         <div class="container">
