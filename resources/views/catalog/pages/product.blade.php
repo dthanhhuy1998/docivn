@@ -125,15 +125,11 @@
                                                     <div class="properties">
 														<div class="property-item">
                                                             <div class="property-item_title">
-                                                                <span class="">Dung tích</span>:
+                                                                <span class="">{{__('Actual Volume')}}</span>:
                                                             </div>
                                                             <div class="property-value">
                                                                 <button class="property-value_button active" data-id="24" data-giahientai="260.000đ" data-giacu="0" data-phantram="100" data-donvitinh="" data-soluong="9999" data-index="1">
-                                                                    @if($productDescription->product->pivot->category->slug == 'tester')
-                                                                        <span>24 mùi</span>
-                                                                    @else
-                                                                        <span>25ml</span>
-                                                                    @endif
+                                                                    <span>{{ $productDescription->product->actual_volume }}</span>
                                                                 </button>
                                                             </div>
                                                         </div>

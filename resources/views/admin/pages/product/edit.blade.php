@@ -137,6 +137,10 @@
                                     <input type="text" class="form-control" placeholder="Nhập số lượng đã bán" value="{{ $product->sold }}" name="sold">
                                 </div>
                                 <div class="form-group">
+                                    <label>{{__('Actual Volume')}}</label>
+                                    <input type="text" class="form-control" placeholder="Nhập thể tích thực tế" value="{{ $product->actual_volume }}" name="actual_volume">
+                                </div>
+                                <div class="form-group">
                                     <label>Vị trí</label>
                                     <input type="number" class="form-control" placeholder="Nhập vị trí xếp hạng" value="{{ $product->sort_order }}" name="sortOrder">
                                 </div>
