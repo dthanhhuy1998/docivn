@@ -65,13 +65,13 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div id="button-prev" class="slider-button button-prev button-theme button-theme_primary" data-title="Ảnh trước">
+                                                    {{-- <div id="button-prev" class="slider-button button-prev button-theme button-theme_primary" data-title="Ảnh trước">
                                                         <span>Ảnh trước</span>
                                                     </div>
                                                     <div id="button-next"
                                                          class="slider-button button-next button-theme button-theme_primary" data-title="Ảnh kế">
                                                         <span>Ảnh kế</span>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="product-avatar_thumb position-relative">
                                                     <div class="swiper pe-1" id="detail-avatar_thumb">
