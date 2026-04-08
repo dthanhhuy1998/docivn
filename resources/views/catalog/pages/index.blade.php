@@ -194,7 +194,7 @@
         @endforeach
     @endif
 
-    <div class="bg-activity" id="activity">
+    {{-- <div class="bg-activity" id="activity">
         <div class="section-gap section-article" style="padding: 100px 0 0 0;">
             <div class="container">
                 <div class="row">
@@ -320,7 +320,7 @@
                 </div>
             </div>
         @endif
-    </div>
+    </div> --}}
     <div class="section-gap section-article bg-white-light" id="blog">
         <div class="container">
             <div class="row">
