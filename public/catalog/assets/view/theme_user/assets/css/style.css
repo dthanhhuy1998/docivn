@@ -1322,7 +1322,7 @@
     display: flex;
     align-items: center;
     /* min-height: 100%; */
-    border: 1px solid var(--primary-color);
+    /* border: 1px solid var(--primary-color); */
 }
 
 .product-card .card-header > a > .badge {
