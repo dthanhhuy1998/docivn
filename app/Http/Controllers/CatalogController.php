@@ -199,7 +199,7 @@ class CatalogController extends Controller
     }
 
     public function products() {
-        $prdCates = ProductCategory::where('id', '<>', 1)->orderBy('sort_order', 'asc')->get();
+        $prdCates = ProductCategory::where('id', '<>', 1)->where('status', 1)->orderBy('sort_order', 'asc')->get();
         // SEO
         $pageTitle = 'Sản phẩm';
         $description = $this->configModel->getConfig('meta_description');
