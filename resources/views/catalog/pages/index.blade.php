@@ -148,7 +148,7 @@
                                         <div class="col-lg-3 col-md-3 col-xs-6 col-6">
                                             <div class="product-card card">
                                                 <div class="card-header">
-                                                    <a class="card-image ratio ratio-1x1" title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}">
+                                                    <a class="card-image" title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}">
                                                         <img src="@if(!empty($item->product->image)) {{ asset('storage/app/' . $item->product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" src="{{ asset('public/catalog/assets/img/lazy-load.png') }}" height="auto" width="100%" alt="{{ $item->product->productDescription->name }}">
                                                     </a>
                                                 </div>

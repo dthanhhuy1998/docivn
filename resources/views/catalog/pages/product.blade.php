@@ -533,8 +533,8 @@
                                                     <div class="col-md-3 col-xs-12 col-lg-3">
                                                         <div class="product-card card">
                                                             <div class="card-header">
-                                                                <a class="card-image ratio ratio-1x1" title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">
-                                                                    <img src="@if(!empty($product->product_image)) {{ asset('storage/app/'.$product->product_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="{{ $product->product_name }}">
+                                                                <a class="card-image" title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">
+                                                                    <img src="@if(!empty($product->product_image)) {{ asset('storage/app/'.$product->product_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" width="100%" alt="{{ $product->product_name }}">
                                                                 </a>
                                                             </div>
                                                             <div class="card-body">

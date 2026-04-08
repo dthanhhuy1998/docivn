@@ -40,8 +40,8 @@
                                     <div class="col-lg-3 col-md-3 col-xs-3 col-6">
                                         <div class="product-card card">
                                             <div class="card-header">
-                                                <a class="card-image ratio ratio-1x1" title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">
-                                                    <img src="@if(!empty($product->product_image)) {{ asset('storage/app/'.$product->product_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="250px" width="250px" alt="{{ $product->product_name }}">
+                                                <a class="card-image" title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">
+                                                    <img src="@if(!empty($product->product_image)) {{ asset('storage/app/'.$product->product_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" width="100%" alt="{{ $product->product_name }}">
                                                 </a>
                                             </div>
                                             <div class="card-body">

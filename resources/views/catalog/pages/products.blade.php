@@ -43,8 +43,8 @@
                                             <div class="col-lg-3 col-md-3 col-xs-3 col-6 mb-3">
                                                 <div class="product-card card">
                                                     <div class="card-header">
-                                                        <a class="card-image ratio ratio-1x1" title="{{ $prd->prd_name }}" href="{{ route('catalog.product', [$prd->cate_slug, $prd->prd_slug]) }}">
-                                                            <img src="@if(!empty($prd->prd_image)) {{ asset('storage/app/'.$prd->prd_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="250px" width="250px" alt="{{ $prd->prd_name }}">
+                                                        <a class="card-image" title="{{ $prd->prd_name }}" href="{{ route('catalog.product', [$prd->cate_slug, $prd->prd_slug]) }}">
+                                                            <img src="@if(!empty($prd->prd_image)) {{ asset('storage/app/'.$prd->prd_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" width="100%" alt="{{ $prd->prd_name }}">
                                                         </a>
                                                     </div>
                                                     <div class="card-body">
