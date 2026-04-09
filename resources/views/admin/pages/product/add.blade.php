@@ -132,7 +132,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>{{__('Actual Volume')}}</label>
-                                    <input type="text" class="form-control" placeholder="Nhập thể tích thực tế" value="{{ old('actual_volume') }}" name="actual_volume">
+                                    <input type="text" class="form-control" placeholder="Nhập thể tích thực" value="{{ old('actual_volume') }}" name="actual_volume">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{__('Actual Volume Description')}}</label>
+                                    <textarea class="form-control" placeholder="Nhập mô tả thể tích thực" rows="3" name="actual_volume_description">{{ old('actual_volume_description') }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Vị trí</label>

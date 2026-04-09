@@ -91,6 +91,7 @@ class ProductController extends Controller
             'price'             => $price,
             'sold'              => trim($request->sold),
             'actual_volume'     => trim($request->actual_volume),
+            'actual_volume_description' => trim($request->actual_volume_description),
             'quantity'          => $quantity,
             'point'             => 0,
             'shopee_link'       => $request->shopeeLink,
@@ -209,20 +210,21 @@ class ProductController extends Controller
         DB::table('product')
         ->where('id', $request->id)
         ->update([
-            'sku'               => $request->sku,
-            'image'             => $file_path,
-            'stock_status_id'   => $request->stockStatus,
-            'original_price'    => $originalPrice,
-            'price'             => $price,
-            'sold'              => trim($request->sold),
-            'actual_volume'     => trim($request->actual_volume),
-            'quantity'          => $quantity,
-            'shopee_link'       => $request->shopeeLink,
-            'sort_order'        => $sortOrder,
-            'display'           => $request->display,
-            'featured'          => $request->featured,
-            'status'            => $request->status,
-            'updated_at'        => date('Y-m-d H:i:s')
+            'sku'                       => $request->sku,
+            'image'                     => $file_path,
+            'stock_status_id'           => $request->stockStatus,
+            'original_price'            => $originalPrice,
+            'price'                     => $price,
+            'sold'                      => trim($request->sold),
+            'actual_volume'             => trim($request->actual_volume),
+            'actual_volume_description' => trim($request->actual_volume_description),
+            'quantity'                  => $quantity,
+            'shopee_link'               => $request->shopeeLink,
+            'sort_order'                => $sortOrder,
+            'display'                   => $request->display,
+            'featured'                  => $request->featured,
+            'status'                    => $request->status,
+            'updated_at'                => date('Y-m-d H:i:s')
         ]);
 
         // update product description table

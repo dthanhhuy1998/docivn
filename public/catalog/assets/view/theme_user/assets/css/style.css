@@ -4303,6 +4303,11 @@ body.js-show_cart {
     color: var(--bs-white);
 }
 
+.detail-information .detail-information_properties .description .property-item_title {
+    margin-top: 15px;
+    color: var(--gray-500);
+}
+
 .detail-information .detail-information_stock {
     margin-top: 15px;
     color: var(--gray-400);

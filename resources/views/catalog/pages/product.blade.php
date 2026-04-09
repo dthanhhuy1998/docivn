@@ -127,10 +127,17 @@
                                                             <div class="property-item_title">
                                                                 <span class="">{{__('Actual Volume')}}</span>:
                                                             </div>
-                                                            <div class="property-value">
-                                                                <button class="property-value_button active" data-id="24" data-giahientai="260.000đ" data-giacu="0" data-phantram="100" data-donvitinh="" data-soluong="9999" data-index="1">
-                                                                    <span>{{ $productDescription->product->actual_volume }}</span>
-                                                                </button>
+                                                            @if($productDescription->product->actual_volume)
+                                                                <div class="property-value">
+                                                                    <button class="property-value_button active" data-id="24" data-giahientai="260.000đ" data-giacu="0" data-phantram="100" data-donvitinh="" data-soluong="9999" data-index="1">
+                                                                        <span>{{ $productDescription->product->actual_volume }}</span>
+                                                                    </button>
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="description">
+                                                            <div class="property-item_title">
+                                                                {!! $productDescription->product->actual_volume_description !!}
                                                             </div>
                                                         </div>
 													</div>
