@@ -48,9 +48,9 @@ class ProductIndexPage {
             chunkForce: true,
 
             server: filePondServerConfig({
-                processUrl: '/admin/uploads/filepond/',
-                patchUrl: '/admin/uploads/filepond/',
-                revertUrl: '/admin/uploads/filepond/',
+                processUrl: '/admin/uploads/filepond',
+                patchUrl: '/admin/uploads/filepond',
+                revertUrl: '/admin/uploads/filepond',
             }),
         });
 
