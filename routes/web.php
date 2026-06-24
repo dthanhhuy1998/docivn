@@ -29,6 +29,8 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ImageController;
 
+use App\Modules\Media\Controllers\FilePondUploadController;
+
 // ================ Catalog Route ================ //
 Route::get(
     '/',
@@ -354,6 +356,16 @@ Route::prefix('admin')->middleware('auth')->group(function () {
             'edit',
             [ProductController::class, 'postEdit']
         )->name('admin.product.postEdit');
+
+        Route::get(
+            'edit/{product_id}/videos',
+            [ProductController::class, 'getProductVideos']
+        )->name('admin.product.videos.getList');
+
+        Route::delete(
+            'edit/{product_id}/videos/{media_id}',
+            [ProductController::class, 'deleteProductVideo']
+        )->name('admin.product.videos.delete');
 
         Route::get(
             'delete/{product_id}',
@@ -689,6 +701,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('edit', [SellerController::class, 'postEdit'])->name('admin.seller.postEdit');
         Route::get('delete/{id}', [SellerController::class, 'getDelete'])->name('admin.seller.getDelete');
     });
+
+    Route::prefix('uploads/filepond')
+        ->name('admin.uploads.filepond.')
+        ->group(function () {
+            Route::post('/', [FilePondUploadController::class, 'process'])->name('process');
+            Route::patch('/{transferId?}', [FilePondUploadController::class, 'patch'])->name('patch');
+            Route::match(['HEAD'], '/{transferId?}', [FilePondUploadController::class, 'head'])->name('head');
+            Route::delete('/', [FilePondUploadController::class, 'revert'])->name('revert');
+        });
 
     // ================ File Manager Route ================ //
     Route::group(['prefix' => 'laravel-filemanager'], function () {

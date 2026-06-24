@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,8 +13,15 @@ const mix = require('laravel-mix');
  */
 
 const buildPath = 'public/build';
-
 mix.setPublicPath(buildPath);
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'resources/js'),
+        },
+    },
+});
 
 const buildJs = (files) => {
     files.forEach((file) => {
@@ -29,7 +37,13 @@ const buildCss = (files) => {
 
 const cssFiles = [];
 
-const jsFiles = [];
+const jsFiles = [
+    // Frontend Files
+
+
+    // Backend Files
+    'resources/js/admin/product/index.js'
+];
 
 buildCss([
     'resources/css/app.css',
@@ -40,5 +54,9 @@ buildJs([
     'resources/js/app.js',
     ...jsFiles,
 ]);
+
+mix.copy('node_modules/video.js/dist/video.min.js', 'public/build/vendor/videojs/video.min.js');
+mix.copy('node_modules/video.js/dist/video-js.min.css', 'public/build/vendor/videojs/video-js.min.css');
+mix.copyDirectory('node_modules/video.js/dist/font', 'public/build/vendor/videojs/font');
 
 mix.version();

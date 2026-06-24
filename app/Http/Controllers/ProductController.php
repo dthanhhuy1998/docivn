@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Storage;
 use Str;
+use Illuminate\Validation\ValidationException;
 
 // Models
 use App\Models\Product;
@@ -16,8 +17,14 @@ use App\Models\ProductStatus;
 use App\Models\ProductImage;
 use App\Models\Attribute;
 
+use App\Modules\Media\Services\MediaService;
+
 class ProductController extends Controller
 {
+    public function __construct(
+        private MediaService $mediaService
+    ) {}
+
     public function getList() {
         $products = Product::orderBy('updated_at', 'desc')->get();
 
@@ -58,6 +65,10 @@ class ProductController extends Controller
             'metaTitle'     => 'required|max:255',
             'categories'    => 'required|array',
             'categories.*'  => 'required|integer',
+            'videos'        => 'nullable|array',
+            'videos.*'      => 'nullable|uuid',
+            'video_thumbnails'   => 'nullable|array',
+            'video_thumbnails.*' => 'nullable|uuid',
         ],[
             'name.required'        => 'Tên sản phẩm không được bỏ trống!',
             'name.max'             => 'Tên sản phẩm tối đa 255 ký tự!',
@@ -67,6 +78,8 @@ class ProductController extends Controller
             'metaTitle.max'        => 'Thẻ tiêu đề tối đa 255 ký tự!',
             'categories.required'  => 'Vui lòng chọn danh mục sản phẩm!',
         ]);
+
+        $this->validateProductVideoUploads($request);
 
         // set default if empty
         $sku = !empty($request->sku) ? $request->sku : $this->generateSKU();
@@ -131,7 +144,13 @@ class ProductController extends Controller
             $product->toGroup()->attach($request->groups);
         }
 
-        return redirect()->route('admin.product.getList')->with('success_msg', 'Bạn đã thêm sản phẩm mới thành công');
+        $this->mediaService->storeProductVideosFromFilePond(
+            $request->input('videos', []),
+            $product,
+            $request->input('video_thumbnails', [])
+        );
+
+        return $this->productSavedResponse($request, 'Bạn đã thêm sản phẩm mới thành công');
     }
 
     public function getEdit($productId) {
@@ -162,12 +181,13 @@ class ProductController extends Controller
         $status = ProductStatus::all();
 
         $product = Product::findOrFail($productId);
+        $productVideos = $this->mediaService->getProductVideos($product);
 
         $headingTitle = heading('Sản phẩm '.$product->productDescription->name);
         $pageTitle = 'Sản phẩm '.$product->productDescription->name;
 
         return view('admin.pages.product.edit',
-            compact('headingTitle', 'pageTitle', 'categories', 'categorySelected', 'groups', 'groupSelected', 'status', 'product')
+            compact('headingTitle', 'pageTitle', 'categories', 'categorySelected', 'groups', 'groupSelected', 'status', 'product', 'productVideos')
         );
     }
 
@@ -178,6 +198,10 @@ class ProductController extends Controller
             'metaTitle'     => 'required|max:255',
             'categories'    => 'required|array',
             'categories.*'  => 'required|integer',
+            'videos'        => 'nullable|array',
+            'videos.*'      => 'nullable|uuid',
+            'video_thumbnails'   => 'nullable|array',
+            'video_thumbnails.*' => 'nullable|uuid',
         ],[
             'name.required'        => 'Tên sản phẩm không được bỏ trống!',
             'name.max'             => 'Tên sản phẩm tối đa 255 ký tự!',
@@ -188,6 +212,8 @@ class ProductController extends Controller
             'metaTitle.max'        => 'Thẻ tiêu đề tối đa 255 ký tự!',
             'categories.required'  => 'Vui lòng chọn danh mục sản phẩm!',
         ]);
+
+        $this->validateProductVideoUploads($request);
 
         // get product by id
         $product = Product::findOrFail($request->id);
@@ -251,7 +277,74 @@ class ProductController extends Controller
             $product->toGroup()->sync($request->groups);
         }
 
-        return redirect()->route('admin.product.getList')->with('success_msg', 'Bạn đã chỉnh sửa sản phẩm thành công');
+        $this->mediaService->storeProductVideosFromFilePond(
+            $request->input('videos', []),
+            $product,
+            $request->input('video_thumbnails', [])
+        );
+
+        return $this->productSavedResponse($request, 'Bạn đã chỉnh sửa sản phẩm thành công');
+    }
+
+    private function productSavedResponse(Request $request, string $message)
+    {
+        if ($request->expectsJson()) {
+            session()->flash('success_msg', $message);
+
+            return response()->json([
+                'message' => $message,
+                'redirect' => route('admin.product.getList'),
+            ]);
+        }
+
+        return redirect()->route('admin.product.getList')->with('success_msg', $message);
+    }
+
+    private function validateProductVideoUploads(Request $request): void
+    {
+        $videos = array_filter((array) $request->input('videos', []));
+        $thumbnails = array_filter((array) $request->input('video_thumbnails', []));
+
+        if (empty($videos) && empty($thumbnails)) {
+            return;
+        }
+
+        $errors = [];
+
+        if (empty($videos)) {
+            $errors['videos'] = ['Vui lòng chọn video sản phẩm!'];
+        }
+
+        if (empty($thumbnails)) {
+            $errors['video_thumbnails'] = ['Vui lòng chọn ảnh thumbnail video!'];
+        }
+
+        if (!empty($videos) && !empty($thumbnails) && count($videos) !== count($thumbnails)) {
+            $errors['video_thumbnails'] = ['Mỗi video cần có một ảnh thumbnail tương ứng!'];
+        }
+
+        if (!empty($errors)) {
+            throw ValidationException::withMessages($errors);
+        }
+    }
+
+    public function getProductVideos($productId)
+    {
+        $product = Product::findOrFail($productId);
+        $productVideos = $this->mediaService->getProductVideos($product);
+
+        return view('admin.pages.product.partials.video-list', compact('product', 'productVideos'));
+    }
+
+    public function deleteProductVideo(Request $request, $productId, $mediaId)
+    {
+        $product = Product::findOrFail($productId);
+
+        $this->mediaService->deleteProductVideo($product, $mediaId);
+
+        return response()->json([
+            'message' => 'Đã xóa video sản phẩm thành công',
+        ]);
     }
 
     public function getDelete($productId) {

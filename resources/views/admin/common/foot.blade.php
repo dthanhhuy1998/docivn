@@ -40,4 +40,9 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="{{ asset('public/admin/assets/dist/js/demo.js') }}"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{ asset('public/admin/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+<!-- Ckeditor -->
+<script src="{{ asset('public/admin/assets/bower_components/ckeditor/ckeditor.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/sweetalert2/sweetalert2.min.js') }}"></script>
+
 <script src="{{ asset('public/admin/assets/dist/js/common.js') }}"></script>

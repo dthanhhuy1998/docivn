@@ -17,7 +17,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{ route('admin.product.postEdit') }}" role="form" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.product.postEdit') }}" role="form" method="post" enctype="multipart/form-data" class="js-product-form">
             @csrf
             <input type="hidden" value="{{ $product->id }}" name="id">
             <div class="row">
@@ -40,10 +40,9 @@
                     <!-- Custom Tabs -->
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#general" data-toggle="tab">Chung</a></li>
-                            <li><a href="#data" data-toggle="tab">Dữ liệu</a></li>
-                            <li><a href="#image" data-toggle="tab">Hình ảnh</a></li>
-                            <li><a href="#links" data-toggle="tab">Liên kết</a></li>
+                            <li class="active"><a href="#general" data-toggle="tab">{{__('General')}}</a></li>
+                            <li><a href="#data" data-toggle="tab">{{__('Data')}}</a></li>
+                            <li><a href="#product-video" data-toggle="tab">{{__('Product Video')}}</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="general">
@@ -55,8 +54,15 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label>{{__('Product Image')}}</label>
+                                    <div class="preview-image">
+                                        <img src="@if(!empty($product->image)) {{ asset('storage/app/' . $product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image" id="preview">
+                                    </div>
+                                    <input type="file" class="form-control" onchange="filePreview(event)" name="image">
+                                </div>
+                                <div class="form-group">
                                     <label>{{__('Product Description')}}</label>
-                                    <textarea name="description" rows="8" class="form-contror" id="editor2" placeholder="Nhập mô tả">{{ $product->productDescription->description }}</textarea>
+                                    <textarea name="description" rows="8" class="form-control textarea" placeholder="Nhập mô tả">{{ $product->productDescription->description }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>{{__('Product Information')}}</label>
@@ -208,59 +214,31 @@
                                 </div>
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="image">
+                            <div class="tab-pane" id="product-video">
                                 <div class="form-group">
-                                    <label>Ảnh thumbnail</label>
-                                    <div class="preview-image">
-                                        <img src="@if(!empty($product->image)) {{ asset('storage/app/' . $product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image" id="preview">
+                                    <label>{{__('Product Video')}}</label>
+                                    <div class="mt-3">
+                                        <input type="file" class="filepond from-control" name="videos[]" id="upload-video">
                                     </div>
-                                    <input type="file" onchange="filePreview(event)" name="image">
                                 </div>
-                                <!-- <table class="table table-bordered table-striped">
-                                    <tr>
-                                        <th>Hình ảnh bổ sung</th>
-                                        <th>Sắp xếp</th>
-                                        <th width="10%"></th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="preview-image" style="margin-bottom: 0;">
-                                                <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Image" id="preview">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control" placeholder="Nhập vị tri sắp xếp" value="0">
-                                        </td>
-                                        <td>
-                                            <button title="Gỡ ảnh" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="preview-image" style="margin-bottom: 0;">
-                                                <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Image" id="preview">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control" placeholder="Nhập vị tri sắp xếp" value="0">
-                                        </td>
-                                        <td>
-                                            <button title="Gỡ ảnh" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td><button title="Thêm ảnh" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></button></td>
-                                    </tr>
-                                </table> -->
+                                <div class="form-group">
+                                    <label>{{__('Product Video Thumbnail')}}</label>
+                                    <div class="mt-3">
+                                        <input type="file" class="filepond from-control" name="video_thumbnails[]" id="upload-video-thumbnail">
+                                    </div>
+                                </div>
+                                <div
+                                    class="product-video-list-wrapper"
+                                    data-product-video-list-url="{{ route('admin.product.videos.getList', [$product->id]) }}"
+                                >
+                                    @include('admin.pages.product.partials.video-list', [
+                                        'product' => $product,
+                                        'productVideos' => $productVideos,
+                                    ])
+                                </div>
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="links">
-                                <div class="form-group">
-                                    <label>Liên kết shopee</label>
-                                    <input type="text" class="form-control" placeholder="Nhập đường dẫn sản phẩm" value="{{ $product->shopee_link }}" name="shopeeLink">
-                                </div>
-                            </div>
+                            <input type="hidden" value="{{ $product->shopee_link }}" name="shopeeLink">
                         </div>
                         <!-- /.tab-content -->
                     </div>
@@ -273,25 +251,10 @@
 @endsection
 
 @section('script')
-<!-- CK Editor -->
-<script src="{{ asset('public/admin/assets/bower_components/ckeditor/ckeditor.js') }}"></script>
-<script>
-    $(function () {
-        let __token = $('meta[name="csrf-token"]').attr('content');
-
-        // Initialize Select2 Elements
-        $('.select2').select2();
-
-        // Editor
-        $('.textarea').wysihtml5();
-        var options = {
-            filebrowserImageBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Images&_token=' + __token,
-            filebrowserBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Files&_token=' + __token
+    <script>
+        window.APP_CONFIG = {
+            url: @json(config('app.url')),
         };
-        CKEDITOR.replace('editor1', options);
-        CKEDITOR.replace('editor2', options);
-    })
-</script>
+    </script>
+    <script src="/public/{{ mix('js/admin/product/index.js', 'build') }}"></script>
 @endsection

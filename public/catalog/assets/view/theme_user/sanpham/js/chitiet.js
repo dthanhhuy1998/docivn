@@ -279,6 +279,76 @@
         });
     }
 
+    const handleProductVideos = function () {
+        const videoPlayers = [];
+        const productVideoSwiper = $('.product-video-swiper');
+
+        if (productVideoSwiper.length > 0 && productVideoSwiper.data('use-swiper') === true) {
+            new Swiper('.product-video-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 12,
+                loop: false,
+                pagination: {
+                    el: '.product-video-pagination',
+                    clickable: true,
+                },
+                on: {
+                    slideChange: function () {
+                        videoPlayers.forEach(function (player) {
+                            player.pause();
+                        });
+                    },
+                },
+            });
+        }
+
+        $(document).on('click', '.product-video-poster', function () {
+            const poster = $(this);
+            const card = poster.closest('.product-video-card');
+
+            if (card.data('loaded')) {
+                return;
+            }
+
+            const videoId = 'product-video-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+            const videoSrc = card.data('video-src');
+            const videoType = card.data('video-type') || 'video/mp4';
+            const videoPoster = card.data('video-poster');
+            const videoHtml = `
+                <video
+                    id="${videoId}"
+                    class="video-js vjs-default-skin vjs-big-play-centered product-video-player"
+                    controls
+                    preload="auto"
+                    playsinline
+                    poster="${videoPoster}"
+                >
+                    <source src="${videoSrc}" type="${videoType}">
+                </video>
+            `;
+
+            card.data('loaded', true);
+            poster.replaceWith(videoHtml);
+
+            const player = videojs(videoId, {
+                controls: true,
+                preload: 'auto',
+                fluid: true,
+                responsive: true,
+            });
+
+            videoPlayers.push(player);
+
+            player.ready(function () {
+                const playPromise = player.play();
+
+                if (playPromise && typeof playPromise.catch === 'function') {
+                    playPromise.catch(function () {});
+                }
+            });
+        });
+    }
+
     $(function () {
         $('[data-bs-toggle="tooltip"]').tooltip();
         handleSlideProduct();
@@ -288,5 +358,6 @@
         handleProductProperties();
         handleSliderProductViewed();
         handleSliderProductRelated();
+        handleProductVideos();
     });
 })(jQuery);

@@ -28,6 +28,8 @@
 <link rel="stylesheet" href="{{ asset('public/admin/assets/bower_components/select2/dist/css/select2.min.css') }}">
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="{{ asset('public/admin/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/sweetalert2/sweetalert2.min.css') }}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('public/admin/assets/dist/css/AdminLTE.min.css') }}">
 <link rel="stylesheet" href="{{ asset('public/admin/assets/dist/css/style.css') }}">

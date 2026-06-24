@@ -1,5 +1,9 @@
 @extends('catalog.common.layout')
 
+@section('style')
+    <link href="/public/{{ mix('vendor/videojs/video-js.min.css', 'build') }}" type="text/css" rel="stylesheet"/>
+@endsection
+
 @section('content')
 @php
     if(count($productDescription->product->images) > 0) {
@@ -170,69 +174,95 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="description-sidebar product-description-panel mt-4">
+                                    <div class="section-heading_highlight">
+                                        <div class="text">
+                                            <div class="title">
+                                                <div class="line"></div>
+                                                <span style="text-transform: uppercase; color: #222;">{{__('Product Description')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="font-theme pb-3">
+                                        {!! $productDescription->detail !!}
+                                    </div>
+                                    <div class="description-sidebar_collapse" id="description-sidebar_collapse">
+                                        <div class="collapse-item">
+                                            <a href="#collapse-item_2"
+                                                data-bs-toggle="collapse"
+                                                class="collapse-item_button"
+                                                aria-expanded="true">
+                                                {{__('Commitment to Sales')}}
+                                                <i class="fal fa-angle-down"></i>
+                                            </a>
+                                            <div class="collapse show" id="collapse-item_2" data-bs-parent="#description-sidebar_collapse">
+                                                <div class="collapse-item_content">
+                                                    <p><meta charset="utf-8" /><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
+                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
+                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
+                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-xxl-4 mt-4 mt-lg-0">
-                                <div class="description-sidebar">
+                                @if(count($productVideos) > 0)
+                                    @php $hasVideoSwiper = count($productVideos) > 1; @endphp
+                                    <div class="description-sidebar product-video-panel mb-4">
                                         <div class="section-heading_highlight">
                                             <div class="text">
                                                 <div class="title">
                                                     <div class="line"></div>
-                                                    <span style="text-transform: uppercase; color: #222;">{{__('Product Description')}}</span>                                         
+                                                    <span style="text-transform: uppercase; color: #222;">Video sản phẩm</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="font-theme pb-3">
-                                            {!! $productDescription->detail !!}
-                                        </div>
-                                        <div class="section-heading_highlight">
-                                            <div class="text">
-                                                <div class="title">
-                                                    <div class="line"></div>
-                                                    <span style="text-transform: uppercase; color: #222;">{{__('Product Information')}}</span>                                            
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="font-theme pb-3">
-                                            {!! $productDescription->description !!}
-                                        </div>
-                                        {{-- <div class="section-heading_highlight">
-                                            <div class="text">
-                                                <div class="title">
-                                                    <div class="line"></div>
-                                                    <span style="text-transform: uppercase; color: #222;">{{__('Use Guide')}}</span>                                    
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                        @if(!empty($phone))
-                                            {{-- <div class="description-sidebar_contact">
-                                                <div class="icon">
-                                                    <img src="{{ asset('public/catalog/assets/public/upload/banner/icon-phone.png') }}" alt="THÔNG TIN VÀ CHÍNH SÁCH-dociperfume.vn | Nước hoa DOCI Perfume chính hãng">
-                                                </div>
-                                                <div class="content">
-                                                    <a href="tel:{{$phone}}">{{$phone}} </a>
-                                                    <span>Gọi tư vấn: (13h - 23h)</span>
-                                                </div>
-                                            </div> --}}
-                                        @endif
-                                        <div class="description-sidebar_collapse" id="description-sidebar_collapse">
-                                            <div class="collapse-item">
-                                                <a href="#collapse-item_2"
-                                                    data-bs-toggle="collapse"
-                                                    class="collapse-item_button"
-                                                    aria-expanded="true">
-                                                    {{__('Commitment to Sales')}}
-                                                    <i class="fal fa-angle-down"></i>
-                                                </a>
-                                                <div class="collapse show" id="collapse-item_2" data-bs-parent="#description-sidebar_collapse">
-                                                    <div class="collapse-item_content">
-                                                        <p><meta charset="utf-8" /><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
-                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
-                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
-                                                        <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
+                                        <div class="product-video-gallery @if($hasVideoSwiper) swiper product-video-swiper @endif" data-use-swiper="{{ $hasVideoSwiper ? 'true' : 'false' }}">
+                                            <div class="@if($hasVideoSwiper) swiper-wrapper @endif">
+                                                @foreach($productVideos as $video)
+                                                    @php
+                                                        $thumbnail = data_get($video->metadata, 'thumbnail');
+                                                        $thumbnailUrl = !empty($thumbnail['path'])
+                                                            ? Storage::disk($thumbnail['disk'] ?? $video->disk)->url($thumbnail['path'])
+                                                            : asset('storage/app/uploads/default.png');
+                                                        $videoUrl = Storage::disk($video->disk)->url($video->path);
+                                                    @endphp
+                                                    <div class="product-video-slide @if($hasVideoSwiper) swiper-slide @endif">
+                                                        <div
+                                                            class="product-video-card"
+                                                            data-video-src="{{ $videoUrl }}"
+                                                            data-video-type="{{ $video->mime_type }}"
+                                                            data-video-poster="{{ $thumbnailUrl }}"
+                                                        >
+                                                            <button type="button" class="product-video-poster" aria-label="Phát video {{ $video->original_name }}">
+                                                                <img src="{{ $thumbnailUrl }}" alt="{{ $video->original_name }}">
+                                                                <span class="product-video-play">
+                                                                    <i class="fas fa-play"></i>
+                                                                </span>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @if($hasVideoSwiper)
+                                                <div class="swiper-pagination product-video-pagination"></div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endif
+                                <div class="description-sidebar">
+                                    <div class="section-heading_highlight">
+                                        <div class="text">
+                                            <div class="title">
+                                                <div class="line"></div>
+                                                <span style="text-transform: uppercase; color: #222;">{{__('Product Information')}}</span>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="font-theme pb-3 product-information-content">
+                                        {!! $productDescription->description !!}
                                     </div>
                                 </div>
                             </div>
@@ -853,6 +883,7 @@
         handleAddToCart();
     });
 </script>
+<script src="/public/{{ mix('vendor/videojs/video.min.js', 'build') }}" type="text/javascript"></script>
 <script src="{{ asset('public/catalog/assets/view/theme_user/sanpham/js/chitiet.js') }}" type="text/javascript"></script>
 <script src="{{ asset('public/catalog/assets/view/theme_user/sanpham/js/danhgia.js') }}" type="text/javascript"></script>
 @endsection

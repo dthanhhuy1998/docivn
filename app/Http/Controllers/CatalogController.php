@@ -34,6 +34,7 @@ use App\Models\Video;
 use App\Models\Seller;
 use App\Models\Image;
 use App\Models\ImageDetail;
+use App\Modules\Media\Services\MediaService;
 
 class CatalogController extends Controller
 {
@@ -283,6 +284,7 @@ class CatalogController extends Controller
             $recentlyVieweds = RecentlyViewed::get(Product::class);
             // contact
             $phone = $this->configModel->getConfig('phone');
+            $productVideos = app(MediaService::class)->getProductVideos($product);
 
             // SEO
             $image = (!empty($productDescription->product->image)) ? asset('public/storage/' . $productDescription->product->image) : asset('public/storage/uploads/default.png');
@@ -301,6 +303,7 @@ class CatalogController extends Controller
                     'relatedProducts',
                     'recentlyVieweds',
                     'phone',
+                    'productVideos',
                 )
             );
         } else {
