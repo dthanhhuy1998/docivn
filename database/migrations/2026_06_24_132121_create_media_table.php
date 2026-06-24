@@ -16,7 +16,9 @@ class CreateMediaTable extends Migration
         Schema::create('media', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->nullableMorphs('related');
+            $table->string('related_type', 100)->nullable();
+            $table->unsignedBigInteger('related_id')->nullable();
+
             $table->string('collection_name')->nullable()->index();
             $table->string('type', 30)->index();
             
