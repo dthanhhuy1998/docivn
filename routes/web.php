@@ -705,10 +705,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::prefix('uploads/filepond')
         ->name('admin.uploads.filepond.')
         ->group(function () {
-            Route::post('/', [FilePondUploadController::class, 'process'])->name('process');
-            Route::patch('/{transferId?}', [FilePondUploadController::class, 'patch'])->name('patch');
-            Route::match(['HEAD'], '/{transferId?}', [FilePondUploadController::class, 'head'])->name('head');
-            Route::delete('/', [FilePondUploadController::class, 'revert'])->name('revert');
+            Route::post('', [FilePondUploadController::class, 'process'])->name('process');
+            Route::patch('{transferId}', [FilePondUploadController::class, 'patch'])->name('patch');
+            Route::match(['HEAD'], '{transferId}', [FilePondUploadController::class, 'head'])->name('head');
+            Route::delete('', [FilePondUploadController::class, 'revert'])->name('revert');
         });
 
     // ================ File Manager Route ================ //

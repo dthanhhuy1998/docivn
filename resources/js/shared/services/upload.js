@@ -4,10 +4,13 @@ export function filePondServerConfig(options = {}) {
     const csrfToken = document
         .querySelector('meta[name="csrf-token"]')
         ?.getAttribute('content');
+    const baseUrl = (options.baseUrl || options.processUrl || '').replace(/\/+$/, '');
 
     return {
+        url: baseUrl,
+
         process: {
-            url: options.processUrl || '',
+            url: '',
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken,
@@ -15,7 +18,7 @@ export function filePondServerConfig(options = {}) {
         },
 
         revert: {
-            url: options.revertUrl || '',
+            url: '',
             method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': csrfToken,
@@ -23,7 +26,7 @@ export function filePondServerConfig(options = {}) {
         },
 
         patch: {
-            url: options.patchUrl || '',
+            url: '/',
             method: 'PATCH',
             headers: {
                 'X-CSRF-TOKEN': csrfToken,
