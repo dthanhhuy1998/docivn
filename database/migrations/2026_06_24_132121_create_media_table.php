@@ -19,7 +19,7 @@ class CreateMediaTable extends Migration
             $table->string('related_type', 100)->nullable();
             $table->unsignedBigInteger('related_id')->nullable();
 
-            $table->string('collection_name')->nullable()->index();
+            $table->string('collection_name', 100)->default('default');
             $table->string('type', 30)->index();
             
             $table->string('disk', 50)->default('public');
