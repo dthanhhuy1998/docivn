@@ -174,7 +174,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="description-sidebar product-description-panel mt-4">
+                                <div class="description-sidebar product-description-panel mt-4 d-none d-md-block">
                                     <div class="section-heading_highlight">
                                         <div class="text">
                                             <div class="title">
@@ -184,7 +184,7 @@
                                         </div>
                                     </div>
                                     <div class="font-theme pb-3">
-                                        {!! $productDescription->detail !!}
+                                        {!! $productDescription->description !!}
                                     </div>
                                     <div class="description-sidebar_collapse" id="description-sidebar_collapse">
                                         <div class="collapse-item">
@@ -252,6 +252,19 @@
                                         </div>
                                     </div>
                                 @endif
+                                <div class="description-sidebar product-description-panel mt-4 d-block d-md-none">
+                                    <div class="section-heading_highlight">
+                                        <div class="text">
+                                            <div class="title">
+                                                <div class="line"></div>
+                                                <span style="text-transform: uppercase; color: #222;">{{__('Product Description')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="font-theme pb-3">
+                                        {!! $productDescription->description !!}
+                                    </div>
+                                </div>
                                 <div class="description-sidebar">
                                     <div class="section-heading_highlight">
                                         <div class="text">
@@ -262,7 +275,29 @@
                                         </div>
                                     </div>
                                     <div class="font-theme pb-3 product-information-content">
-                                        {!! $productDescription->description !!}
+                                        {!! $productDescription->detail !!}
+                                    </div>
+                                </div>
+                                <div class="description-sidebar product-description-panel mt-4 d-block d-md-none">
+                                    <div class="section-heading_highlight">
+                                        <div class="text">
+                                            <div class="title">
+                                                <div class="line"></div>
+                                                <span style="text-transform: uppercase; color: #222;">{{__('Sales Commitment')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="description-sidebar_collapse" id="description-sidebar_collapse">
+                                        <div class="collapse-item">
+                                            <div class="collapse show" id="collapse-item_2" data-bs-parent="#description-sidebar_collapse">
+                                                <div class="collapse-item_content">
+                                                    <p><meta charset="utf-8" /><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
+                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
+                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
+                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
