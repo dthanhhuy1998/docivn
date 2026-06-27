@@ -13,6 +13,7 @@ use Cart;
 use Session;
 use \RecentlyViewed\Facades\RecentlyViewed;
 use Mail;
+use Storage;
 
 // Models
 use App\Models\Article;
@@ -287,13 +288,12 @@ class CatalogController extends Controller
             $productVideos = app(MediaService::class)->getProductVideos($product);
 
             // SEO
-            $image = (!empty($productDescription->product->image)) ? asset('public/storage/' . $productDescription->product->image) : asset('public/storage/uploads/default.png');
             $seo = new Controller();
             $seo->seo_tools(
                 $productDescription->meta_title,
                 $productDescription->meta_description,
                 $productDescription->meta_keyword,
-                $image,
+                $productDescription->product?->image ? asset('storage/app/'.$productDescription->product->image) : asset('public/storage/uploads/default.png'),
                 URL::current()
             );
 
