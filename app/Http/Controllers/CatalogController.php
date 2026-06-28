@@ -294,7 +294,8 @@ class CatalogController extends Controller
                 $productDescription->meta_description,
                 $productDescription->meta_keyword,
                 $productDescription->product?->image ? asset('storage/app/'.$productDescription->product->image) : asset('public/storage/uploads/default.png'),
-                URL::current()
+                URL::current(),
+                'Product'
             );
 
             return view('catalog.pages.product',

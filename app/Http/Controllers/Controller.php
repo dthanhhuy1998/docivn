@@ -21,14 +21,24 @@ class Controller extends BaseController
         return substr(time(), -8);
     }
 
-    public function seo_tools($title, $description, $keyword, $image, $url) {
+    public function seo_tools($title, $description, $keyword, $image, $url, $type = 'website') {
+        $url = $url ?? url()->current();
+        $title = $title ?? '';
+        $description = $description ?? '';
+        $keyword = $keyword ?? '';
+        $image = $image ?? '';
+
         SEOMeta::setTitle($title)
         ->setDescription($description)
-        ->addKeyword($keyword);
+        ->addKeyword($keyword)
+        ->setCanonical($url);
 
         OpenGraph::setTitle($title)
         ->setDescription($description)
-        ->addImage($image)
+        ->addImage($image, [
+            'width' => '1200',
+            'height' => '630',
+        ])
         ->setUrl($url)
         ->setSiteName($title);
 
@@ -36,11 +46,14 @@ class Controller extends BaseController
         ->setDescription($description)
         ->setUrl($url)
         ->setImage($image)
-        ->setType('website')
+        ->setType('summary_large_image')
         ->setSite($title);
 
-        JsonLd::setType('perfume')
-        ->setImage($image)
+        JsonLd::setType($type)
+        ->addImage($image, [
+            'width' => '1200',
+            'height' => '630',
+        ])
         ->setTitle($title)
         ->setDescription($description)
         ->setUrl($url)
