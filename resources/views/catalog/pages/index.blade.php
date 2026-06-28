@@ -149,7 +149,7 @@
                                             <div class="product-card card">
                                                 <div class="card-header">
                                                     <a class="card-image" title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}">
-                                                        <img src="@if(!empty($item->product->image)) {{ asset('storage/app/' . $item->product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" src="{{ asset('public/catalog/assets/img/lazy-load.png') }}" height="auto" width="100%" alt="{{ $item->product->productDescription->name }}">
+                                                        <img src="@if(!empty($item->product->image)) {{ Storage::disk('public')->url($item->product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" src="{{ asset('public/assets/img/lazy-load.png') }}" height="auto" width="100%" alt="{{ $item->product->productDescription->name }}">
                                                     </a>
                                                 </div>
                                                 <div class="card-body">

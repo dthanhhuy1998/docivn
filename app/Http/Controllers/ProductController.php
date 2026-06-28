@@ -91,7 +91,7 @@ class ProductController extends Controller
         // custom image
         $file_path = '';
         if($request->hasFile('image')) {
-            $file_path = Storage::putFile('uploads/product', $request->file('image'));
+            $file_path = Storage::disk('public')->putFile('uploads/product', $request->file('image'));
         }
 
         // add to product table
@@ -220,8 +220,8 @@ class ProductController extends Controller
 
         // get image input
         if($request->hasFile('image')) {
-            Storage::delete($product->image);
-            $file_path = Storage::putFile('uploads/product', $request->file('image'));
+            Storage::disk('public')->delete($product->image);
+            $file_path = Storage::disk('public')->putFile('uploads/product', $request->file('image'));
         } else {
             $file_path = $product->image;
         }
@@ -352,7 +352,7 @@ class ProductController extends Controller
         $images = ProductImage::where('product_id', $productId)->get();
         foreach($images as $item) {
             if(!empty($item->image)) {
-                Storage::delete($item->image);
+                Storage::disk('public')->delete($item->image);
             }
             DB::table('product_image')->where('id', "=", $item->id)->delete();
         }
@@ -365,7 +365,7 @@ class ProductController extends Controller
 
         // remove image
         if(!empty($product->image)) {
-            Storage::delete($product->image);
+            Storage::disk('public')->delete($product->image);
         }
 
         // detele product table
@@ -409,7 +409,7 @@ class ProductController extends Controller
         // add image
         $file_path = '';
         if($request->hasFile('image')) {
-            $file_path = Storage::putFile('uploads/product/additional', $request->file('image'));
+            $file_path = Storage::disk('public')->putFile('uploads/product/additional', $request->file('image'));
         }
 
        DB::table('product_image')->insert([
@@ -438,8 +438,8 @@ class ProductController extends Controller
 
         // get image input
         if($request->hasFile('image')) {
-            Storage::delete($image->image);
-            $file_path = Storage::putFile('uploads/product/additional', $request->file('image'));
+            Storage::disk('public')->delete($image->image);
+            $file_path = Storage::disk('public')->putFile('uploads/product/additional', $request->file('image'));
         } else {
             $file_path = $image->image;
         }
@@ -464,7 +464,7 @@ class ProductController extends Controller
 
         // remove image
         if(!empty($image->image)) {
-            Storage::delete($image->image);
+            Storage::disk('public')->delete($image->image);
         }
 
         $image->delete();

@@ -44,7 +44,7 @@
                                                 <div class="product-card card">
                                                     <div class="card-header">
                                                         <a class="card-image" title="{{ $prd->prd_name }}" href="{{ route('catalog.product', [$prd->cate_slug, $prd->prd_slug]) }}">
-                                                            <img src="@if(!empty($prd->prd_image)) {{ asset('storage/app/'.$prd->prd_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" width="100%" alt="{{ $prd->prd_name }}">
+                                                            <img src="@if(!empty($prd->prd_image)){{Storage::disk('public')->url($prd->prd_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" width="100%" alt="{{ $prd->prd_name }}">
                                                         </a>
                                                     </div>
                                                     <div class="card-body">

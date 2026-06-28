@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label>{{__('Product Image')}}</label>
                                     <div class="preview-image">
-                                        <img src="@if(!empty($product->image)) {{ asset('storage/app/' . $product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image" id="preview">
+                                        <img src="@if(!empty($product->image)) {{ Storage::disk('public')->url($product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image" id="preview">
                                     </div>
                                     <input type="file" class="form-control" onchange="filePreview(event)" name="image">
                                 </div>

@@ -47,8 +47,8 @@
                                                         <div class="swiper-wrapper">
                                                             <div class="swiper-slide">
                                                                 <div class="preview-avatar_photo__item">
-                                                                    <a data-fancybox="detailGallery" data-index="1" href="@if(!empty( $productDescription->product->image)) {{ asset('storage/app/'.$productDescription->product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" title="{{ $productDescription->name }}">
-                                                                        <img src="@if(!empty( $productDescription->product->image)) {{ asset('storage/app/'.$productDescription->product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="{{ $productDescription->name }}">
+                                                                    <a data-fancybox="detailGallery" data-index="1" href="@if(!empty( $productDescription->product->image)) {{ Storage::disk('public')->url($productDescription->product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" title="{{ $productDescription->name }}">
+                                                                        <img src="@if(!empty( $productDescription->product->image)) {{ Storage::disk('public')->url($productDescription->product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="{{ $productDescription->name }}">
                                                                         <span><i class="far fa-search-plus"></i></span>
                                                                     </a>
                                                                 </div>
@@ -59,8 +59,8 @@
                                                                     @php $countSlide++; @endphp
                                                                     <div class="swiper-slide">
                                                                         <div class="preview-avatar_photo__item">
-                                                                            <a data-fancybox="detailGallery" data-index="{{ $countSlide }}" href="@if(!empty($image->image)) {{ asset('storage/app/' . $image->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" title="{{ $productDescription->name }}">
-                                                                                <img src="@if(!empty($image->image)) {{ asset('storage/app/'.$image->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="{{ $productDescription->product->name }}">
+                                                                            <a data-fancybox="detailGallery" data-index="{{ $countSlide }}" href="@if(!empty($image->image)) {{ Storage::disk('public')->url($image->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" title="{{ $productDescription->name }}">
+                                                                                <img src="@if(!empty($image->image)) {{ Storage::disk('public')->url($image->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="{{ $productDescription->product->name }}">
                                                                                 <span><i class="far fa-search-plus"></i></span>
                                                                             </a>
                                                                         </div>
@@ -82,14 +82,14 @@
                                                         <div class="swiper-wrapper h-auto">
                                                             <div class="swiper-slide h-auto">
                                                                 <div class="preview-avatar_thumb__item">
-                                                                    <img src="@if(!empty( $productDescription->product->image)) {{ asset('storage/app/'.$productDescription->product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="{{ $productDescription->name }}">
+                                                                    <img src="@if(!empty( $productDescription->product->image)) {{ Storage::disk('public')->url($productDescription->product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="{{ $productDescription->name }}">
                                                                 </div>
                                                             </div>
                                                             @if(count($productDescription->product->images) > 0)
                                                                 @foreach($images as $image)
                                                                     <div class="swiper-slide h-auto">
                                                                         <div class="preview-avatar_thumb__item">
-                                                                            <img src="@if(!empty($image->image)) {{ asset('storage/app/'.$image->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="{{ $productDescription->product->name }}">
+                                                                            <img src="@if(!empty($image->image)) {{ Storage::disk('public')->url($image->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="{{ $productDescription->product->name }}">
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
@@ -602,7 +602,7 @@
                                                         <div class="product-card card">
                                                             <div class="card-header">
                                                                 <a class="card-image" title="{{ $product->product_name }}" href="{{ route('catalog.product', [$product->category_slug, $product->product_slug]) }}">
-                                                                    <img src="@if(!empty($product->product_image)) {{ asset('storage/app/'.$product->product_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" width="100%" alt="{{ $product->product_name }}">
+                                                                    <img src="@if(!empty($product->product_image)) {{ Storage::disk('public')->url($product->product_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" width="100%" alt="{{ $product->product_name }}">
                                                                 </a>
                                                             </div>
                                                             <div class="card-body">

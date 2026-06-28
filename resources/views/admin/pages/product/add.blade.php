@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label>{{__('Product Image')}}</label>
                                     <div class="preview-image">
-                                        <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Image" id="preview">
+                                        <img src="{{ Storage::disk('public')->url('uploads/default.png') }}" alt="Image" id="preview">
                                     </div>
                                     <input type="file" class="form-control" onchange="filePreview(event)" name="image">
                                 </div>
