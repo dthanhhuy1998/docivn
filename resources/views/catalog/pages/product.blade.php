@@ -39,7 +39,17 @@
                         <div class="row">
                             <div class="col-lg-8 col-xxl-8">
                                 <div class="detail-main bg-white">
-                                    <div class="row gx-0 gy-4 gx-lg-3">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="section-heading_highlight">
+                                                <div class="text">
+                                                    <div class="title">
+                                                        <div class="line"></div>
+                                                        <span style="text-transform: uppercase; color: #222;">{{__('Product Images')}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6">
                                             <div class="detail-images">
                                                 <div class="product-avatar_photo slider-theme">
