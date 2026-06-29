@@ -4544,7 +4544,7 @@ body.js-show_cart {
     width: 100%;
     background: #000;
     overflow: hidden;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
 }
 .product-video-poster {
     position: relative;
@@ -4590,14 +4590,52 @@ body.js-show_cart {
     height: 100%;
 }
 .product-video-card .video-js.vjs-fluid {
-    padding-top: 133.3333%;
+    padding-top: 125%;
 }
-.product-video-pagination {
-    position: static;
-    margin-top: 12px;
+.product-video-thumb {
+    margin-top: 16px;
+    padding-bottom: 2px;
 }
-.product-video-pagination .swiper-pagination-bullet-active {
-    background: #ffe04d;
+.product-video-thumb-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--transition);
+}
+.product-video-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+.product-video-thumb-item span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 224, 77, .92);
+    color: #222;
+    font-size: 10px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+.product-video-thumb-item span i {
+    margin-left: 2px;
+}
+.product-video-thumb .swiper-slide-thumb-active .product-video-thumb-item {
+    border-color: var(--primary-color);
 }
 .product-information-content table {
     width: 100%;

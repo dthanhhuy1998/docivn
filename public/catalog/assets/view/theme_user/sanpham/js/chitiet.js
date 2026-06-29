@@ -282,16 +282,38 @@
     const handleProductVideos = function () {
         const videoPlayers = [];
         const productVideoSwiper = $('.product-video-swiper');
+        const productVideoThumb = $('.product-video-thumb');
 
-        if (productVideoSwiper.length > 0 && productVideoSwiper.data('use-swiper') === true) {
+        if (productVideoSwiper.length > 0 && (productVideoSwiper.data('use-swiper') === true || productVideoSwiper.data('use-swiper') === 'true')) {
+            let videoThumbSwiper = null;
+
+            if (productVideoThumb.length > 0) {
+                videoThumbSwiper = new Swiper('.product-video-thumb', {
+                    spaceBetween: 10,
+                    slidesPerView: 3,
+                    watchSlidesProgress: true,
+                    slideToClickedSlide: true,
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 3,
+                        },
+                        525: {
+                            slidesPerView: 4,
+                        },
+                        991: {
+                            slidesPerView: 3,
+                        },
+                    },
+                });
+            }
+
             new Swiper('.product-video-swiper', {
                 slidesPerView: 1,
                 spaceBetween: 12,
                 loop: false,
-                pagination: {
-                    el: '.product-video-pagination',
-                    clickable: true,
-                },
+                thumbs: videoThumbSwiper ? {
+                    swiper: videoThumbSwiper,
+                } : undefined,
                 on: {
                     slideChange: function () {
                         videoPlayers.forEach(function (player) {
@@ -319,6 +341,7 @@
                     id="${videoId}"
                     class="video-js vjs-default-skin vjs-big-play-centered product-video-player"
                     controls
+                    autoplay
                     preload="auto"
                     playsinline
                     poster="${videoPoster}"
@@ -330,8 +353,12 @@
             card.data('loaded', true);
             poster.replaceWith(videoHtml);
 
+            const nativeVideo = document.getElementById(videoId);
+            const nativePlayPromise = nativeVideo ? nativeVideo.play() : null;
+
             const player = videojs(videoId, {
                 controls: true,
+                autoplay: true,
                 preload: 'auto',
                 fluid: true,
                 responsive: true,
@@ -340,10 +367,16 @@
             videoPlayers.push(player);
 
             player.ready(function () {
-                const playPromise = player.play();
+                const playPromise = nativePlayPromise || player.play();
 
                 if (playPromise && typeof playPromise.catch === 'function') {
-                    playPromise.catch(function () {});
+                    playPromise.catch(function () {
+                        const retryPlayPromise = player.play();
+
+                        if (retryPlayPromise && typeof retryPlayPromise.catch === 'function') {
+                            retryPlayPromise.catch(function () {});
+                        }
+                    });
                 }
             });
         });

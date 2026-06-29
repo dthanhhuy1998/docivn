@@ -246,10 +246,27 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            @if($hasVideoSwiper)
-                                                <div class="swiper-pagination product-video-pagination"></div>
-                                            @endif
                                         </div>
+                                        @if($hasVideoSwiper)
+                                            <div class="product-video-thumb swiper">
+                                                <div class="swiper-wrapper h-auto">
+                                                    @foreach($productVideos as $video)
+                                                        @php
+                                                            $thumbnail = data_get($video->metadata, 'thumbnail');
+                                                            $thumbnailUrl = !empty($thumbnail['path'])
+                                                                ? Storage::disk($thumbnail['disk'] ?? $video->disk)->url($thumbnail['path'])
+                                                                : asset('storage/app/uploads/default.png');
+                                                        @endphp
+                                                        <div class="swiper-slide h-auto">
+                                                            <button type="button" class="product-video-thumb-item" aria-label="Xem video {{ $video->original_name }}">
+                                                                <img src="{{ $thumbnailUrl }}" alt="{{ $video->original_name }}">
+                                                                <span><i class="fas fa-play"></i></span>
+                                                            </button>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                 @endif
                                 <div class="description-sidebar product-description-panel mt-4 d-block d-md-none">
