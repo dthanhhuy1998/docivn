@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>{{__('Actual Volume Description')}}</label>
-                                    <textarea class="form-control" placeholder="Nhập mô tả thể tích thực" rows="3" name="actual_volume_description">{{ old('actual_volume_description') }}</textarea>
+                                    <textarea class="form-control textarea" placeholder="Nhập mô tả thể tích thực" rows="3" name="actual_volume_description">{{ old('actual_volume_description') }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Vị trí</label>
