@@ -290,7 +290,7 @@
             if (productVideoThumb.length > 0) {
                 videoThumbSwiper = new Swiper('.product-video-thumb', {
                     spaceBetween: 10,
-                    slidesPerView: 3,
+                    slidesPerView: 4,
                     watchSlidesProgress: true,
                     slideToClickedSlide: true,
                     breakpoints: {
@@ -301,7 +301,7 @@
                             slidesPerView: 4,
                         },
                         991: {
-                            slidesPerView: 3,
+                            slidesPerView: 4,
                         },
                     },
                 });

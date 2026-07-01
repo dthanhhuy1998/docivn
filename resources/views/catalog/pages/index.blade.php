@@ -428,7 +428,7 @@
                                 </div>
                             </div>
                             <div class="feedback__col">
-                                <p class="feedback__desc">Công việc phải đi lại và gặp gỡ khá nhiều đối tác nên mình thường xuyên sử dụng nước hoa. DOCI cực kì ấn tượng …</p>
+                                <p class="feedback__desc">Công việc phải đi lại và gặp gỡ khá nhiều đối tác nên mình thường xuyên sử dụng nước hoa. DOCI cực kì ấn tượng…</p>
                                 <a href="#comments" class="feedback__link">
                                     <span>Xem thêm</span>
                                     <i class="fas fa-arrow-right"></i>
@@ -444,7 +444,7 @@
                                 </div>
                             </div>
                             <div class="feedback__col">
-                                <p class="feedback__desc">Cảm ơn DOCI vì sản phẩm rất chất lượng, nước hoa rất thơm, mẫu mã đẹp và đặc biệt là mùi thơm lưu lại từ sáng đến …</p>
+                                <p class="feedback__desc">Cảm ơn DOCI vì sản phẩm rất chất lượng, nước hoa rất thơm, mẫu mã đẹp và đặc biệt là mùi thơm lưu lại từ sáng đến…</p>
                                 <a href="#comments" class="feedback__link">
                                     <span>Xem thêm</span>
                                     <i class="fas fa-arrow-right"></i>
@@ -460,7 +460,7 @@
                                 </div>
                             </div>
                             <div class="feedback__col">
-                                <p class="feedback__desc">Mình đã từng sử dụng nước hoa nhiều nơi. Nhưng mua ở DOCI thích nhất ở đặc điểm thơm bền, lâu, mùi chuẩn auth …</p>
+                                <p class="feedback__desc">Mình đã từng sử dụng nước hoa nhiều nơi. Nhưng mua ở DOCI thích nhất ở đặc điểm thơm bền, lâu, mùi chuẩn…</p>
                                 <a href="#comments" class="feedback__link">
                                     <span>Xem thêm</span>
                                     <i class="fas fa-arrow-right"></i>

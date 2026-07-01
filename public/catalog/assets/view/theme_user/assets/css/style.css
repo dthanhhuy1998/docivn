@@ -4709,9 +4709,9 @@ body.js-show_cart {
     margin-top: 20px;
 }
 
-.description-sidebar + .description-sidebar {
+/* .description-sidebar + .description-sidebar {
     margin-top: 20px;
-}
+} */
 
 .description-sidebar .description-sidebar_contact {
     display: -webkit-box;
