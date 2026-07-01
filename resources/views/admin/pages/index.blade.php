@@ -110,7 +110,7 @@
                                         <td class="text-right" width="3%">{{ $count }}</td>
                                         <td width="10%" align="center">
                                             <div class="preview-image" style="width: 60px; height: 60px;">
-                                                <img src="@if(!empty($product->image)) {{ asset('storage/app/' . $product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                <img src="@if(!empty($product->image)) {{ Storage::disk('public')->url($product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                             </div>
                                         </td>
                                         <td>{{ $product->productDescription->name }}</td>

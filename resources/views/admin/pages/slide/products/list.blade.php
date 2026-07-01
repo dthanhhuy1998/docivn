@@ -44,47 +44,49 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th width="5%" class="text-right">STT</th>
-                                    <th width="15%" align="center">Ảnh</th>
-                                    <th>Đường dẫn liên kết</th>
-                                    <th width="8%">Vị trí</th>
-                                    <th width="10%">Trang chủ</th>
-                                    <th width="10%">Ngày tạo</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php $count = 0; @endphp
-                                @foreach($slides as $slide)
-                                    @php $count++; @endphp
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered table-striped">
+                                <thead>
                                     <tr>
-                                        <td>{{ $count }}</td>
-                                        <td>
-                                            <div class="preview-image" style="width: 200px; height: auto;">
-                                                <img src="@if(!empty($slide->slide_image)) {{ asset('storage/app/' . $slide->slide_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
-                                            </div>
-                                        </td>
-                                        <td>{{ $slide->slide_link }}</td>
-                                        <td align="center">{{ $slide->slide_sort_order }}</td>
-                                        <td align="center">
-                                            @if($slide->slide_status == 1)
-                                                <small class="label bg-green">Hiển thị</small>
-                                            @else
-                                                <small class="label bg-red">Không hiển thị</small>
-                                            @endif
-                                        </td>
-                                        <td>{{ date_vi($slide->created_at) }}</td>
-                                        <td width="10%">
-                                            <a href="{{ route('admin.slide.product.getEdit', [$slide->id]) }}" class="btn btn-primary btn-sm" title="Chỉnh sửa"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('admin.slide.product.getDelete', [$slide->id]) }}" class="btn btn-danger btn-sm" title="Xóa bỏ" onclick="return confirm('Bạn có chắn chắn muốn xóa slide này. Xóa?');"><i class="fa fa-trash"></i></a>
-                                        </td>
+                                        <th width="5%" class="text-right">STT</th>
+                                        <th width="15%" align="center">Ảnh</th>
+                                        <th>Đường dẫn liên kết</th>
+                                        <th width="8%">Vị trí</th>
+                                        <th width="10%">Trang chủ</th>
+                                        <th width="10%">Ngày tạo</th>
+                                        <th></th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @php $count = 0; @endphp
+                                    @foreach($slides as $slide)
+                                        @php $count++; @endphp
+                                        <tr>
+                                            <td>{{ $count }}</td>
+                                            <td>
+                                                <div class="preview-image" style="width: 200px; height: auto;">
+                                                    <img src="@if(!empty($slide->slide_image)) {{ asset('storage/app/' . $slide->slide_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                </div>
+                                            </td>
+                                            <td>{{ $slide->slide_link }}</td>
+                                            <td align="center">{{ $slide->slide_sort_order }}</td>
+                                            <td align="center">
+                                                @if($slide->slide_status == 1)
+                                                    <small class="label bg-green">Hiển thị</small>
+                                                @else
+                                                    <small class="label bg-red">Không hiển thị</small>
+                                                @endif
+                                            </td>
+                                            <td>{{ date_vi($slide->created_at) }}</td>
+                                            <td width="10%">
+                                                <a href="{{ route('admin.slide.product.getEdit', [$slide->id]) }}" class="btn btn-primary btn-xs" title="Chỉnh sửa"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('admin.slide.product.getDelete', [$slide->id]) }}" class="btn btn-danger btn-xs" title="Xóa bỏ" onclick="return confirm('Bạn có chắn chắn muốn xóa slide này. Xóa?');"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

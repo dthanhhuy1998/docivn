@@ -88,7 +88,7 @@
                                                 <td>{{ $count }}</td>
                                                 <td width="10%" align="center">
                                                     <div class="preview-image" style="width: 60px; height: 60px;">
-                                                        <img src="@if(!empty($item->image)) {{ asset('storage/app/' . $item->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                        <img src="@if(!empty($item->image)) {{ Storage::disk('public')->url($item->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                                     </div>
                                                 </td>
                                                 <td class="text-center">{{ $item->sort_order }}</td>
