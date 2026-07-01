@@ -279,7 +279,7 @@
                                         @endif
                                     </div>
                                 @endif
-                                <div class="description-sidebar product-description-panel mt-4 d-block d-md-none">
+                                <div class="description-sidebar product-description-panel mt-4 d-block d-md-none" style="margin-bottom: 20px;">
                                     <div class="section-heading_highlight">
                                         <div class="text">
                                             <div class="title">
