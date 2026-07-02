@@ -38,7 +38,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table @if(count($comments) < 0) id="datatable" @endif class="table table-bordered">
+                        <div class="table-responsive">
+                            <table @if(count($comments) < 0) id="datatable" @endif class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -68,6 +69,7 @@
                                 @endif
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

@@ -68,7 +68,7 @@
                                 <div class="form-group">
                                     <label>Hình ảnh</label>
                                     <div class="preview-image">
-                                        <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Image" id="preview">
+                                        <img src="{{ Storage::disk('public')->url('uploads/default.png') }}" alt="Image" id="preview">
                                     </div>
                                     <input type="file" onchange="filePreview(event)" name="file">
                                 </div>

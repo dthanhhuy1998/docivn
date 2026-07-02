@@ -1,7 +1,7 @@
 @extends('catalog.common.layout')
 
 @section('style')
-    <link href="/public/{{ mix('vendor/videojs/video-js.min.css', 'build') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ mix('vendor/videojs/video-js.min.css', 'build') }}" type="text/css" rel="stylesheet"/>
 @endsection
 
 @section('content')
@@ -207,10 +207,10 @@
                                             </a>
                                             <div class="collapse show" id="collapse-item_2" data-bs-parent="#description-sidebar_collapse">
                                                 <div class="collapse-item_content">
-                                                    <p><meta charset="utf-8" /><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
-                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
-                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
-                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
+                                                    <p><meta charset="utf-8" /><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
+                                                    <p><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
+                                                    <p><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
+                                                    <p><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -236,7 +236,7 @@
                                                         $thumbnail = data_get($video->metadata, 'thumbnail');
                                                         $thumbnailUrl = !empty($thumbnail['path'])
                                                             ? Storage::disk($thumbnail['disk'] ?? $video->disk)->url($thumbnail['path'])
-                                                            : asset('storage/app/uploads/default.png');
+                                                            : Storage::disk('public')->url('uploads/default.png');
                                                         $videoUrl = Storage::disk($video->disk)->url($video->path);
                                                     @endphp
                                                     <div class="product-video-slide @if($hasVideoSwiper) swiper-slide @endif">
@@ -265,7 +265,7 @@
                                                             $thumbnail = data_get($video->metadata, 'thumbnail');
                                                             $thumbnailUrl = !empty($thumbnail['path'])
                                                                 ? Storage::disk($thumbnail['disk'] ?? $video->disk)->url($thumbnail['path'])
-                                                                : asset('storage/app/uploads/default.png');
+                                                                : Storage::disk('public')->url('uploads/default.png');
                                                         @endphp
                                                         <div class="swiper-slide h-auto">
                                                             <button type="button" class="product-video-thumb-item" aria-label="Xem video {{ $video->original_name }}">
@@ -318,10 +318,10 @@
                                         <div class="collapse-item">
                                             <div class="collapse show" id="collapse-item_2" data-bs-parent="#description-sidebar_collapse">
                                                 <div class="collapse-item_content">
-                                                    <p><meta charset="utf-8" /><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
-                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
-                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
-                                                    <p><img alt="" src="{{ asset('public/catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
+                                                    <p><meta charset="utf-8" /><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product is genuine')}}</p>
+                                                    <p><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Product meets quality standards')}}</p>
+                                                    <p><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Covered by manufacturer warranty')}}</p>
+                                                    <p><img alt="" src="{{ asset('catalog/assets/public/upload/banner/check-circle.png') }}" style="width: 20px; height: 20px;" /> {{__('Free shipping')}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -682,7 +682,7 @@
                                                         <div class="product-card card">
                                                             <div class="card-header">
                                                                 <a class="card-image ratio ratio-1x1" title="{{ $product->productDescription->name }}" href="{{ route('catalog.product', [$product->pivot->category->slug, $product->productDescription->slug]) }}">
-                                                                    <img src="@if(!empty($product->image)) {{ asset('storage/app/' . $product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="250px" width="250px" alt="{{ $product->productDescription->name }}">
+                                                                    <img src="@if(!empty($product->image)) {{ Storage::disk('public')->url($product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" height="250px" width="250px" alt="{{ $product->productDescription->name }}">
                                                                 </a>
                                                                 <div class="card-actions">
                                                                     <div class="card-action">
@@ -945,7 +945,7 @@
         handleAddToCart();
     });
 </script>
-<script src="/public/{{ mix('vendor/videojs/video.min.js', 'build') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/sanpham/js/chitiet.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/sanpham/js/danhgia.js') }}" type="text/javascript"></script>
+<script src="{{ mix('vendor/videojs/video.min.js', 'build') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/sanpham/js/chitiet.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/sanpham/js/danhgia.js') }}" type="text/javascript"></script>
 @endsection

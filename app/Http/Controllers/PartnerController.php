@@ -40,7 +40,7 @@ class PartnerController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/partner', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/partner', $request->file('file'));
         }
 
         DB::table('partner')->insert([
@@ -70,8 +70,8 @@ class PartnerController extends Controller
         $partner = Partner::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($partner->partner_image);
-            $file_path = Storage::putFile('uploads/partner', $request->file('file'));
+            Storage::disk('public')->delete($partner->partner_image);
+            $file_path = Storage::disk('public')->putFile('uploads/partner', $request->file('file'));
         } else {
             $file_path = $partner->partner_image;
         }
@@ -93,7 +93,7 @@ class PartnerController extends Controller
         $partner = Partner::findOrFail($partnerId);
 
         if(!empty($partner->partner_image)) {
-            Storage::delete($partner->partner_image);
+            Storage::disk('public')->delete($partner->partner_image);
         }
 
         $partner->delete();

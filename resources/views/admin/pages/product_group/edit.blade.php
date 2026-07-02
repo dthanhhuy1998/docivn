@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <label>Hình ảnh</label>
                                     <div class="preview-image">
-                                        <img src="@if(!empty($group->image)) {{ asset('storage/app/' . $group->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image" id="preview">
+                                        <img src="@if(!empty($group->image)) {{ Storage::disk('public')->url($group->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image" id="preview">
                                     </div>
                                     <input type="file" onchange="filePreview(event)" name="file">
                                 </div>

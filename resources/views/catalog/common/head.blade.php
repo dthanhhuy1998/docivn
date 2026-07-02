@@ -9,7 +9,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<link rel="shortcut icon" type="image/png" href="{{ isset($siteConfig['favicon']) ? asset('public/storage/'. $siteConfig['favicon']) : 'public/images/no-image.png' }}"/>
+<link rel="shortcut icon" type="image/png" href="{{ isset($siteConfig['favicon']) ? Storage::disk('public')->url($siteConfig['favicon']) : 'public/images/no-image.png' }}"/>
 <noscript>
   <style>
       body {
@@ -28,21 +28,21 @@
 {!! Twitter::generate() !!}
 {!! JsonLd::generate() !!}
 
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/jquery-ui/jquery-ui.min.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/bootstrap5/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/dropzone/dropzone.min.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/swiper/swiper-bundle.min.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/fancybox/fancybox.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/jquery-ui/jquery-ui.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/bootstrap5/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/dropzone/dropzone.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/swiper/swiper-bundle.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/fancybox/fancybox.min.css') }}" type="text/css" rel="stylesheet"/>
 <!-- lightgallery plugins -->
-<link type="text/css" rel="stylesheet" href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/lightgallery/css/lightgallery.css') }}"/>
-<link type="text/css" rel="stylesheet" href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/lightgallery/css/lg-zoom.css') }}" />
-<link type="text/css" rel="stylesheet" href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/lightgallery/css/lg-video.css') }}"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/aos/aos.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/lib/sweetalert2/sweetalert2.min.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/fonts/fontawesome.min.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/css/animate.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/css/base.css') }}" type="text/css" rel="stylesheet"/>
-<link href="{{ asset('public/catalog/assets/view/theme_user/assets/css/style.css') }}" type="text/css" rel="stylesheet"/>
+<link type="text/css" rel="stylesheet" href="{{ asset('catalog/assets/view/theme_user/assets/lib/lightgallery/css/lightgallery.css') }}"/>
+<link type="text/css" rel="stylesheet" href="{{ asset('catalog/assets/view/theme_user/assets/lib/lightgallery/css/lg-zoom.css') }}" />
+<link type="text/css" rel="stylesheet" href="{{ asset('catalog/assets/view/theme_user/assets/lib/lightgallery/css/lg-video.css') }}"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/aos/aos.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/lib/sweetalert2/sweetalert2.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/fonts/fontawesome.min.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/css/animate.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/css/base.css') }}" type="text/css" rel="stylesheet"/>
+<link href="{{ asset('catalog/assets/view/theme_user/assets/css/style.css') }}" type="text/css" rel="stylesheet"/>
 
 {!! $siteConfig['code_header'] ?? '' !!}

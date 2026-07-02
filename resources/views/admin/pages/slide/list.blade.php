@@ -65,7 +65,7 @@
                                             <td>{{ $count }}</td>
                                             <td>
                                                 <div class="preview-image" style="width: 200px; height: auto;">
-                                                    <img src="@if(!empty($slide->slide_image)) {{ asset('storage/app/' . $slide->slide_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                    <img src="@if(!empty($slide->slide_image)) {{ Storage::disk('public')->url($slide->slide_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                                 </div>
                                             </td>
                                             <td>{{ $slide->slide_link }}</td>

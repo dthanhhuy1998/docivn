@@ -30,7 +30,7 @@
                      <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="@if(!empty($user->image)) {{ asset('storage/app/' . Auth::user()->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Avatar">
+                            <img class="profile-user-img img-responsive img-circle" src="@if(!empty($user->image)) {{ Storage::disk('public')->url(Auth::user()->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Avatar">
                             <h3 class="profile-username text-center">{{ $user->lastname }} {{ $user->firstname }}</h3>
                             <p class="text-muted text-center">{{ $user->userGroup->name }}</p>
                             <ul class="list-group list-group-unbordered">

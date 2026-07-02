@@ -1,21 +1,21 @@
 
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/jquery/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/jquery-ui/jquery-ui.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/bootstrap5/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/swiper/swiper-bundle.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/owlcarousel/owl.carousel.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/fancybox/fancybox.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/jquery/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/jquery-ui/jquery-ui.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/bootstrap5/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/swiper/swiper-bundle.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/owlcarousel/owl.carousel.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/fancybox/fancybox.min.js') }}" type="text/javascript"></script>
 <!-- lightgallery plugins -->
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/lightgallery/lightgallery.umd.js') }}"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/lightgallery/plugins/thumbnail/lg-thumbnail.umd.js') }}"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/lightgallery/plugins/video/lg-video.umd.js') }}"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/aos/aos.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/lib/sweetalert2/sweetalert2.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/js/core.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/js/toc.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/js/wow.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/lib/public/js/function.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/catalog/assets/view/theme_user/assets/js/app.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/lightgallery/lightgallery.umd.js') }}"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/lightgallery/plugins/thumbnail/lg-thumbnail.umd.js') }}"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/lightgallery/plugins/video/lg-video.umd.js') }}"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/aos/aos.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/lib/sweetalert2/sweetalert2.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/js/core.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/js/toc.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/js/wow.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/lib/public/js/function.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/assets/js/app.js') }}" type="text/javascript"></script>
 <script>
     /****
     * Handle Shopping Cart

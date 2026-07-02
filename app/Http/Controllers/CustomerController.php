@@ -68,7 +68,7 @@ class CustomerController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/reviews', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/reviews', $request->file('file'));
         }
 
         DB::table('customer_reviews')->insert([
@@ -106,8 +106,8 @@ class CustomerController extends Controller
         $review = CustomerReviews::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($review->cr_image);
-            $file_path = Storage::putFile('uploads/reviews', $request->file('file'));
+            Storage::disk('public')->delete($review->cr_image);
+            $file_path = Storage::disk('public')->putFile('uploads/reviews', $request->file('file'));
         } else {
             $file_path = $review->cr_image;
         }
@@ -130,7 +130,7 @@ class CustomerController extends Controller
         $review = CustomerReviews::findOrFail($customerReviewId);
 
         if(!empty($review->cr_image)) {
-            Storage::delete($review->cr_image);
+            Storage::disk('public')->delete($review->cr_image);
         }
 
         $review->delete();

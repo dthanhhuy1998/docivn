@@ -93,7 +93,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="product_table" class="table table-bordered table-striped">
+                        <div class="table-responsive">
+                            <table id="product_table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th width="3%">#</th>
@@ -119,6 +120,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -131,7 +133,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="post_table" class="table table-bordered table-striped">
+                        <div class="table-responsive">
+                            <table id="post_table" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th width="3%">#</th>
@@ -148,7 +151,7 @@
                                         <td class="text-right" width="3%">{{ $count }}</td>
                                         <td width="10%" align="center">
                                             <div class="preview-image" style="width: 60px; height: 60px;">
-                                                <img src="@if(!empty($post->image)) {{ asset('storage/app/' . $post->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                <img src="@if(!empty($post->image)) {{ Storage::disk('public')->url($post->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                             </div>
                                         </td>
                                         <td>{{ $post->title }}</td>
@@ -157,6 +160,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

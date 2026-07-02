@@ -88,7 +88,7 @@ class CatalogController extends Controller
         $title = $this->configModel->getConfig('meta_title');
         $description = $this->configModel->getConfig('meta_description');
         $keyword = $this->configModel->getConfig('meta_keyword');
-        $logo = asset('public/storage/'.$this->configModel->getConfig('logo'));
+        $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
         $this->seo_tools($title, $description, $keyword, $logo, URL::current());
 
         return view('catalog.pages.index',
@@ -104,7 +104,7 @@ class CatalogController extends Controller
         $pageTitle = 'Tất cả bài viết';
         $description = $this->configModel->getConfig('meta_description');
         $keyword = $this->configModel->getConfig('meta_keyword');
-        $logo = asset('public/storage/'.$this->configModel->getConfig('logo'));
+        $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
 
         return view('catalog.pages.articles',
             compact('pageTitle', 'articles', 'categories')
@@ -137,7 +137,7 @@ class CatalogController extends Controller
             $pageTitle = $category->name;
 
             // SEO
-            $image = (!empty($category->image)) ? asset('public/storage/' . $category->image) : asset('public/storage/uploads/default.png');
+            $image = (!empty($category->image)) ? Storage::disk('public')->url($category->image) : Storage::disk('public')->url('uploads/default.png');
             $seo = new Controller();
             $seo->seo_tools(
                 $category->meta_title,
@@ -182,7 +182,7 @@ class CatalogController extends Controller
             ->get();
 
             // SEO
-            $image = (!empty($article->image)) ? asset('public/storage/' . $article->image) : asset('public/storage/uploads/default.png');
+            $image = (!empty($article->image)) ? Storage::disk('public')->url($article->image) : Storage::disk('public')->url('uploads/default.png');
             $seo = new Controller();
             $seo->seo_tools(
                 $article->meta_title,
@@ -206,7 +206,7 @@ class CatalogController extends Controller
         $pageTitle = 'Sản phẩm';
         $description = $this->configModel->getConfig('meta_description');
         $keyword = $this->configModel->getConfig('meta_keyword');
-        $logo = asset('public/storage/'.$this->configModel->getConfig('logo'));
+        $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
         $this->seo_tools($pageTitle, $description, $keyword, $logo, URL::current());
 
         return view('catalog.pages.products',
@@ -249,7 +249,7 @@ class CatalogController extends Controller
 
             // SEO
             $pageTitle = $category->name;
-            $image = (!empty($category->image)) ? asset('public/storage/' .$category->image) : asset('public/storage/uploads/default.png');
+            $image = (!empty($category->image)) ? Storage::disk('public')->url($category->image) : Storage::disk('public')->url('uploads/default.png');
             $seo = new Controller();
             $seo->seo_tools(
                 $category->meta_title,
@@ -323,7 +323,7 @@ class CatalogController extends Controller
 
         $pageTitle = $group->name;
         // SEO
-        $image = (!empty($group->image)) ? asset('public/storage/' . $group->image) : asset('public/storage/uploads/default.png');
+        $image = (!empty($group->image)) ? Storage::disk('public')->url($group->image) : Storage::disk('public')->url('uploads/default.png');
         $seo = new Controller();
         $seo->seo_tools(
             $group->meta_title,
@@ -354,7 +354,7 @@ class CatalogController extends Controller
             $pageTitle = 'Tìm kiếm';
             $description = $this->configModel->getConfig('meta_description');
             $keyword = $this->configModel->getConfig('meta_keyword');
-            $logo = asset('public/storage/'.$this->configModel->getConfig('logo'));
+            $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
             $this->seo_tools($pageTitle, $description, $keyword, $logo, URL::current());
 
             return view('catalog.pages.search',
@@ -389,7 +389,7 @@ class CatalogController extends Controller
                     'prd_price'     => $product->p_price,
                     'wishlist'      => 0,
                     'review'        => 5,
-                    'prd_image'     => (!empty($product->image)) ? asset('public/storage/'.$product->image) : asset('public/storage/uploads/default.png'),
+                    'prd_image'     => (!empty($product->image)) ? Storage::disk('public')->url($product->image) : Storage::disk('public')->url('uploads/default.png'),
                     'redirect'      => route('catalog.product', [$category->slug, $product->pd_slug]),
                 );
                 
@@ -417,7 +417,7 @@ class CatalogController extends Controller
         $pageTitle = 'Album: ' . $album->image_name;
         $description = $this->configModel->getConfig('meta_description');
         $keyword = $this->configModel->getConfig('meta_keyword');
-        $logo = asset('public/storage/'.$this->configModel->getConfig('logo'));
+        $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
         $this->seo_tools($pageTitle, $description, $keyword, $logo, URL::current());
 
         return view('catalog.pages.gallery',
@@ -776,7 +776,7 @@ class CatalogController extends Controller
                 $pageTitle = 'Seller '.$seller->TenSeller;
                 $description = $this->configModel->getConfig('meta_description');
                 $keyword = $this->configModel->getConfig('meta_keyword');
-                $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+                $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
                 $this->seo_tools($pageTitle, $description, $keyword, $logo, URL::current());
 
                 return view('catalog.pages.seller',

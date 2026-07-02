@@ -39,7 +39,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -96,6 +97,7 @@
                                @endforeach
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

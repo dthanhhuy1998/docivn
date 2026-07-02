@@ -29,7 +29,7 @@
                                 @foreach($slides as $slide)
                                     <div class="swiper-slide">
                                         <a href="@if(!empty($slide->slide_link)){{$slide->slide_link}}@else{{ '#' }}@endif" class="hero-slide">
-                                            <img src="@if(!empty($slide->slide_image)) {{ asset('storage/app/'.$slide->slide_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" class="hero-image w-100 img-fluid" alt="Slide">
+                                            <img src="@if(!empty($slide->slide_image)) {{ Storage::disk('public')->url($slide->slide_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" class="hero-image w-100 img-fluid" alt="Slide">
                                         </a>
                                     </div>
                                 @endforeach
@@ -60,7 +60,7 @@
                         @foreach($slides as $slide)
                             <div class="swiper-slide">
                                 <a href="@if(!empty($slide->slide_link)){{$slide->slide_link}}@else{{ '#' }}@endif" class="hero-slide">
-                                    <img src="@if(!empty($slide->slide_image)) {{ asset('storage/app/'.$slide->slide_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" class="hero-image w-100 img-fluid" alt="Slide">
+                                    <img src="@if(!empty($slide->slide_image)) {{ Storage::disk('public')->url($slide->slide_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" class="hero-image w-100 img-fluid" alt="Slide">
                                 </a>
                             </div>
                         @endforeach
@@ -99,8 +99,8 @@
                                 <div class="swiper-wrapper">
                                     @foreach($slideProducts as $slide)
                                         <div class="swiper-slide">
-                                            <a href="{{ $slide->slide_link ? $slide->slide_link : asset('storage/app/'.$slide->slide_image) }}" data-fancybox="" data-caption="{{ $slide->slide_title }}" data-fancybox-index="1">
-                                                <img src="{{ asset('storage/app/'.$slide->slide_image) }}" class="w-100" alt="{{ $slide->slide_title }}">
+                                            <a href="{{ $slide->slide_link ? $slide->slide_link : Storage::disk('public')->url($slide->slide_image) }}" data-fancybox="" data-caption="{{ $slide->slide_title }}" data-fancybox-index="1">
+                                                <img src="{{ Storage::disk('public')->url($slide->slide_image) }}" class="w-100" alt="{{ $slide->slide_title }}">
                                             </a>
                                         </div>
                                     @endforeach
@@ -133,7 +133,7 @@
                             <div class="col-lg-12 col-xs-12 col-md-12">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-xs-12" style="padding-bottom: 35px;">
-                                        <div class="bg-scroll" style="background-image: url('@if(!empty($category->image)) {{ asset('storage/app/'.$category->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif');"></div>
+                                        <div class="bg-scroll" style="background-image: url('@if(!empty($category->image)) {{ Storage::disk('public')->url($category->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif');"></div>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                                             <div class="product-card card">
                                                 <div class="card-header">
                                                     <a class="card-image" title="{{ $item->product->productDescription->name }}" href="{{ Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.product', [$item->category->slug, $item->product->productDescription->slug]) : '#' }}">
-                                                        <img src="@if(!empty($item->product->image)) {{ Storage::disk('public')->url($item->product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" src="{{ asset('public/assets/img/lazy-load.png') }}" height="auto" width="100%" alt="{{ $item->product->productDescription->name }}">
+                                                        <img src="@if(!empty($item->product->image)) {{ Storage::disk('public')->url($item->product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" src="{{ asset('assets/img/lazy-load.png') }}" height="auto" width="100%" alt="{{ $item->product->productDescription->name }}">
                                                     </a>
                                                 </div>
                                                 <div class="card-body">
@@ -221,8 +221,8 @@
                                     @php $count = 0; @endphp
                                     @foreach($activityPosts as $post)
                                         <div class="swiper-slide">
-                                            <a href="@if(!empty($post->post_image)) {{ asset('storage/app/'.$post->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" data-thumb="@if(!empty($post->post_image)) {{ asset('storage/app/'.$post->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" data-fancybox data-caption="{{ $post->post_title }}" data-fancybox-index="{{ $count }}">
-                                                <img src="@if(!empty($post->post_image)) {{ asset('storage/app/'.$post->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" class="w-100" alt="{{ $post->post_title }}">
+                                            <a href="@if(!empty($post->post_image)) {{ Storage::disk('public')->url($post->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" data-thumb="@if(!empty($post->post_image)) {{ Storage::disk('public')->url($post->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" data-fancybox data-caption="{{ $post->post_title }}" data-fancybox-index="{{ $count }}">
+                                                <img src="@if(!empty($post->post_image)) {{ Storage::disk('public')->url($post->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" class="w-100" alt="{{ $post->post_title }}">
                                             </a>
                                         </div>
                                         @php $count++; @endphp
@@ -235,7 +235,7 @@
                                 <div class="swiper-wrapper">
                                     @foreach($activityPosts as $post)
                                         <div class="swiper-slide">
-                                            <img src="@if(!empty($post->post_image)) {{ asset('storage/app/'.$post->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" class="w-100" alt="{{ $post->post_title }}">
+                                            <img src="@if(!empty($post->post_image)) {{ Storage::disk('public')->url($post->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" class="w-100" alt="{{ $post->post_title }}">
                                         </div>
                                     @endforeach
                                 </div>
@@ -259,7 +259,7 @@
                                 <div class="col-md-3 col-lg-3 col-xs-12">
                                     <a href="{{ Illuminate\Support\Facades\Route::has('catalog.gallery') ? route('catalog.gallery', $image->id) : '#' }}" class="galley-item">
                                         <div class="gallery-image">
-                                            <img src="{{ asset('storage/app/'. $image->image_picture) }}" alt="{{ $image->image_name }}" class="w-100">
+                                            <img src="{{ Storage::disk('public')->url($image->image_picture) }}" alt="{{ $image->image_name }}" class="w-100">
                                             <div class="gallery-overlay">
                                                 <i class="fa fa-search"></i>
                                             </div>
@@ -303,7 +303,7 @@
                                                 @foreach($videos as $video)
                                                     @php $countVideo++; @endphp
                                                     <li class="playlist__bars-item @if($countVideo == 1) active @endif" data-href="{{ $video->youtube }}">
-                                                        <div class="playlist-thumb" style="background-image: url('@if(!empty($video->thumbnail)) {{ asset('storage/app/'.$video->thumbnail) }} @else {{ asset('storage/app/uploads/default.png') }} @endif');">
+                                                        <div class="playlist-thumb" style="background-image: url('@if(!empty($video->thumbnail)) {{ Storage::disk('public')->url($video->thumbnail) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif');">
                                                             <img src="{{ asset('public/catalog/assets/public/upload/theme/logo-youtube.webp') }}" alt="logo-youtube">
                                                         </div>
                                                         <p>{{ $video->title }}</p>
@@ -342,7 +342,7 @@
                                     <div class="col">
                                         <a href="{{ Illuminate\Support\Facades\Route::has('catalog.article') ? route('catalog.article', [$article->category_slug, $article->post_slug]) : '#' }}" class="article-card card">
                                             <div class="card-header">
-                                                <img src="@if(!empty($article->post_image)) {{ asset('storage/app/'.$article->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="{{ $article->post_title }}">
+                                                <img src="@if(!empty($article->post_image)) {{ Storage::disk('public')->url($article->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="{{ $article->post_title }}">
                                             </div>
                                             <div class="card-body d-flex flex-column">
                                                 <div class="card-meta"> Ngày đăng: {{ date_vi($article->post_created_at) }}</div>
@@ -366,7 +366,7 @@
                                         <div class="item">
                                             <a href="{{ \Illuminate\Support\Facades\Route::has('catalog.product') ? route('catalog.article', [$article->category_slug, $article->post_slug]) : '#' }}" class="article-card card">
                                                 <div class="card-header">
-                                                    <img src="@if(!empty($article->post_image)) {{ asset('storage/app/'.$article->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="Bí quyết chọn nước hoa phù hợp cho mọi cô gái">
+                                                    <img src="@if(!empty($article->post_image)) {{ Storage::disk('public')->url($article->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="Bí quyết chọn nước hoa phù hợp cho mọi cô gái">
                                                 </div>
                                                 <div class="card-body d-flex flex-column">
                                                     <div class="card-meta">
@@ -419,7 +419,7 @@
                                 </a>
                                 <div class="feedback__user">
                                     <div class="user-avatar">
-                                        <img src="{{ asset('public/catalog/assets/public/upload/feedback/D.png') }}" alt="Avatar">
+                                        <img src="{{ asset('catalog/assets/public/upload/feedback/D.png') }}" alt="Avatar">
                                     </div>
                                     <div class="user-info">
                                         <h4>Đăng Hoàng Khoa</h4>
@@ -435,7 +435,7 @@
                                 </a>
                                 <div class="feedback__user">
                                     <div class="user-avatar">
-                                        <img src="{{ asset('public/catalog/assets/public/upload/feedback/N.png') }}" alt="Avatar">
+                                        <img src="{{ asset('catalog/assets/public/upload/feedback/N.png') }}" alt="Avatar">
                                     </div>
                                     <div class="user-info">
                                         <h4>Nguyễn Quốc Anh</h4>
@@ -451,7 +451,7 @@
                                 </a>
                                 <div class="feedback__user">
                                     <div class="user-avatar">
-                                        <img src="{{ asset('public/catalog/assets/public/upload/feedback/T.png') }}" alt="Avatar">
+                                        <img src="{{ asset('catalog/assets/public/upload/feedback/T.png') }}" alt="Avatar">
                                     </div>
                                     <div class="user-info">
                                         <h4>Trần Đình Nam</h4>
@@ -467,7 +467,7 @@
                                 </a>
                                 <div class="feedback__user">
                                     <div class="user-avatar">
-                                        <img src="{{ asset('public/catalog/assets/public/upload/feedback/L.png') }}" alt="Avatar">
+                                        <img src="{{ asset('catalog/assets/public/upload/feedback/L.png') }}" alt="Avatar">
                                     </div>
                                     <div class="user-info">
                                         <h4>Lê Huỳnh Diễm My</h4>
@@ -545,7 +545,7 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('public/catalog/assets/view/theme_user/index/js/index.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/index/js/index.js') }}" type="text/javascript"></script>
 <script>
     let renderVideo = (link) => {
         var youtubeId = link.replace("https://www.youtube.com/watch?v=", "");;

@@ -109,7 +109,8 @@
                             <h3 class="box-title">Danh sách sản phẩm</h3>
                         </div>
                         <div class="box-body">
-                            <table id="datatable" class="table table-bordered">
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -135,7 +136,7 @@
                                             <td>{{ $count }}</td>
                                             <td>
                                                 <div class="preview-image" style="width: 60px; height: 60px;">
-                                                    <img src="@if(!empty($item->product->image)) {{ asset('storage/app/'.$item->product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                    <img src="@if(!empty($item->product->image)) {{ Storage::disk('public')->url($item->product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                                 </div>
                                             </td>
                                             <td>{{ $item->product->productDescription->name }}</td>
@@ -150,6 +151,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
 
                     </div>

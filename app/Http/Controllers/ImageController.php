@@ -44,7 +44,7 @@ class ImageController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/images', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/images', $request->file('file'));
         }
 
         DB::table('images')->insert([
@@ -95,8 +95,8 @@ class ImageController extends Controller
         $image = Image::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($image->image_picture);
-            $file_path = Storage::putFile('uploads/images', $request->file('file'));
+            Storage::disk('public')->delete($image->image_picture);
+            $file_path = Storage::disk('public')->putFile('uploads/images', $request->file('file'));
         } else {
             $file_path = $image->image_picture;
         }
@@ -120,7 +120,7 @@ class ImageController extends Controller
         $image = Image::findOrFail($id);
 
         if(!empty($image->image_picture)) {
-            Storage::delete($image->image_picture);
+            Storage::disk('public')->delete($image->image_picture);
         }
 
         $image->delete();
@@ -148,7 +148,7 @@ class ImageController extends Controller
 
         if($request->hasfile('images')) {
             foreach($request->file('images') as $file) {
-                $filename = Storage::putFile('uploads/images/detail', $file);
+                $filename = Storage::disk('public')->putFile('uploads/images/detail', $file);
                 DB::table('image_details')->insert([
                     'image_name'    => null,
                     'image_picture' => $filename,
@@ -166,7 +166,7 @@ class ImageController extends Controller
         $image = DB::table('image_details')->where('id', $id)->first();
 
         if(!empty($image->image_picture)) {
-            Storage::delete($image->image_picture);
+            Storage::disk('public')->delete($image->image_picture);
         }
 
         DB::table('image_details')->where('id', '=', $id)->delete();
@@ -191,8 +191,8 @@ class ImageController extends Controller
         $image = ImageDetail::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($image->image_picture);
-            $file_path = Storage::putFile('uploads/images/detail', $request->file('file'));
+            Storage::disk('public')->delete($image->image_picture);
+            $file_path = Storage::disk('public')->putFile('uploads/images/detail', $request->file('file'));
         } else {
             $file_path = $image->image_picture;
         }

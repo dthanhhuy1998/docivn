@@ -70,7 +70,7 @@
                                                 <span class="badge badge-sale">Giảm {{ round(discountPercent($product->original_price, $product->price)) }}%</span>
                                             @endif
                                             <div class="productBox__image">
-                                                <img alt="{{ $product->productDescription->name }}" class="lazy" data-src="@if(!empty($product->image)) {{ asset('storage/app/' . $product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" src="{{ asset('public/catalog/assets/img/lazyload.jpg') }}" />
+                                                <img alt="{{ $product->productDescription->name }}" class="lazy" data-src="@if(!empty($product->image)) {{ Storage::disk('public')->url($product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" src="{{ asset('public/catalog/assets/img/lazyload.jpg') }}" />
                                                 <div class="img-overlay"></div>
                                                 <div class="productBtn" title="{{ $product->productDescription->name }}">
                                                     <a title="Xem nhanh" href="{{ route('catalog.product', [$product->productDescription->slug]) }}" class="productBtn-btn btn-quick-view"><i class="fas fa-eye"></i></a>
@@ -140,7 +140,7 @@
                                             @endif
                                             <div class="productBox__image">
                                                 <a title="{{ $product->productDescription->name }}" href="{{ route('catalog.product', [$product->productDescription->slug]) }}">
-                                                    <img alt="{{ $product->productDescription->name }}" class="lazy" data-src="@if(!empty($product->image)) {{ asset('storage/app/' . $product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" src="{{ asset('public/catalog/assets/img/lazyload.jpg') }}" />
+                                                    <img alt="{{ $product->productDescription->name }}" class="lazy" data-src="@if(!empty($product->image)) {{ Storage::disk('public')->url($product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" src="{{ asset('public/catalog/assets/img/lazyload.jpg') }}" />
                                                 </a>
                                             </div>
                                             <div class="productBox__content">

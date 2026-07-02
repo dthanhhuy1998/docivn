@@ -45,7 +45,7 @@ class VideoController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/video/thumb', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/video/thumb', $request->file('file'));
         }
 
         DB::table('videos')->insert([
@@ -86,8 +86,8 @@ class VideoController extends Controller
         $video = Video::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($video->thumbnail);
-            $file_path = Storage::putFile('uploads/video/thumb', $request->file('file'));
+            Storage::disk('public')->delete($video->thumbnail);
+            $file_path = Storage::disk('public')->putFile('uploads/video/thumb', $request->file('file'));
         } else {
             $file_path = $video->thumbnail;
         }
@@ -110,7 +110,7 @@ class VideoController extends Controller
         $video = Video::findOrFail($videoId);
 
         if(!empty($video->thumbnail)) {
-            Storage::delete($video->thumbnail);
+            Storage::disk('public')->delete($video->thumbnail);
         }
 
         $video->delete();

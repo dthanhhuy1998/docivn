@@ -35,7 +35,7 @@
                             <div class="form-group  @error('file') has-error @enderror">
                                 <label>Ảnh slide</label>
                                 <div class="preview-image" style="width: 200px; height: auto;">
-                                    <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Avatar" id="preview">
+                                    <img src="{{ Storage::disk('public')->url('uploads/default.png') }}" alt="Avatar" id="preview">
                                 </div>
                                 <input type="file" onchange="filePreview(event)" name="file">
                                 @error('file')

@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label>Ảnh đại diện</label>
                                 <div class="preview-image">
-                                    <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Avatar" id="preview">
+                                    <img src="{{ Storage::disk('public')->url('uploads/default.png') }}" alt="Avatar" id="preview">
                                 </div>
                                 <input type="file" onchange="filePreview(event)" name="file">
                             </div>

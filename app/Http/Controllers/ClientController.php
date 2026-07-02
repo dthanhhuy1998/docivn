@@ -37,7 +37,7 @@ class ClientController extends Controller
         $pageTitle = 'Thông tin tài khoản';
         $description = $this->configModel->getConfig('meta_description');
         $keyword = $this->configModel->getConfig('meta_keyword');
-        $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+        $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
         $this->seo_tools($headingTitle, $description, $keyword, $logo, URL::current());
 
         return view('catalog.pages.client.index',
@@ -86,7 +86,7 @@ class ClientController extends Controller
         $pageTitle = 'Đổi mật khẩu';
         $description = $this->configModel->getConfig('meta_description');
         $keyword = $this->configModel->getConfig('meta_keyword');
-        $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+        $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
         $this->seo_tools($headingTitle, $description, $keyword, $logo, URL::current());
 
         return view('catalog.pages.client.reset-password',
@@ -157,7 +157,7 @@ class ClientController extends Controller
             $pageTitle = 'Đơn hàng của tôi';
             $description = $this->configModel->getConfig('meta_description');
             $keyword = $this->configModel->getConfig('meta_keyword');
-            $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+            $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
             $this->seo_tools($headingTitle, $description, $keyword, $logo, URL::current());
 
             return view('catalog.pages.client.invoice',
@@ -181,8 +181,8 @@ class ClientController extends Controller
             $pageTitle = 'Đơn hàng HD'.$invoice->id;
             $description = $this->configModel->getConfig('meta_description');
             $keyword = $this->configModel->getConfig('meta_keyword');
-            $favicon = asset('storage/app/'.$this->configModel->getConfig('favicon'));
-            $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+            $favicon = Storage::disk('public')->url($this->configModel->getConfig('favicon'));
+            $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
             $phone = $this->configModel->getConfig('phone');
             $gmail = $this->configModel->getConfig('gmail');
             $this->seo_tools($headingTitle, $description, $keyword, $logo, URL::current());

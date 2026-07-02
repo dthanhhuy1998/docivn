@@ -48,7 +48,7 @@
                             <div class="form-group @error('image') has-error @enderror">
                                 <label><strong class="color-red font-15">*</strong> Ảnh bổ sung</label>
                                 <div class="preview-image">
-                                    <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Avatar" id="preview">
+                                    <img src="{{ Storage::disk('public')->url('uploads/default.png') }}" alt="Avatar" id="preview">
                                 </div>
                                 <input type="file" onchange="filePreview(event)" name="image">
                                 @error('image')
@@ -70,7 +70,8 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="datatable" class="table table-bordered table-striped">
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th width="10%">STT</th>
@@ -101,6 +102,7 @@
                                     @endif
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </div>

@@ -25,7 +25,9 @@ class ProductIndexPage {
             filebrowserImageBrowseUrl: this.appUrl + '/admin/laravel-filemanager?type=Images',
             filebrowserImageUploadUrl: this.appUrl + '/admin/laravel-filemanager/upload?type=Images&_token=' + this.token,
             filebrowserBrowseUrl: this.appUrl + '/admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: this.appUrl + '/admin/laravel-filemanager/upload?type=Files&_token=' + this.token
+            filebrowserUploadUrl: this.appUrl + '/admin/laravel-filemanager/upload?type=Files&_token=' + this.token,
+            language: 'vi',
+            defaultLanguage: 'vi',
         };
 
         ['editor1', 'editor2'].forEach((editorId) => {

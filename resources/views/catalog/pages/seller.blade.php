@@ -125,10 +125,10 @@
 </style>
 <body cz-shortcut-listen="true">
     <div class="card">
-        <img class="card-img-top" src="@if(!empty($seller->Banner)) {{ asset('storage/app/'.$seller->Banner) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Card image cap">
+        <img class="card-img-top" src="@if(!empty($seller->Banner)) {{ Storage::disk('public')->url($seller->Banner) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Card image cap">
         <div class="card-body little-profile text-center">
             <div class="pro-img">
-                <img src="@if(!empty($seller->AnhDaiDien)) {{ asset('storage/app/'.$seller->AnhDaiDien) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="user">
+                <img src="@if(!empty($seller->AnhDaiDien)) {{ Storage::disk('public')->url($seller->AnhDaiDien) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="user">
             </div>
             <h3 class="m-b-0">{{ $seller->TenSeller }}</h3>
             <p>{{ $seller->CapBac }}</p> 

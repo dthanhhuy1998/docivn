@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label>{{__('Favicon')}}</label>
                                     <div class="preview-image">
-                                        <img src="{{ isset($configData['favicon']) ? asset('public/storage/'.$configData['favicon']) : asset('public/images/no-image.png') }}" alt="Image" id="favicon-preview">
+                                        <img src="{{ isset($configData['favicon']) ? Storage::disk('public')->url($configData['favicon']) : asset('images/no-image.png') }}" alt="Image" id="favicon-preview">
                                     </div>
                                     <input type="file" class="form-control" name="favicon" id="favicon">
                                 </div>
@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label>{{__('Logo')}}</label>
                                     <div class="preview-image">
-                                        <img src="{{ isset($configData['logo']) ? asset('public/storage/'.$configData['logo']) : asset('public/images/no-image.png') }}" alt="Image" id="logo-preview">
+                                        <img src="{{ isset($configData['logo']) ? Storage::disk('public')->url($configData['logo']) : asset('images/no-image.png') }}" alt="Image" id="logo-preview">
                                     </div>
                                     <input type="file" class="form-control" name="logo" id="logo">
                                 </div>
@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <label>{{__('Logo Footer')}}</label>
                                     <div class="preview-image">
-                                        <img src="{{ isset($configData['logo_footer']) ? asset('public/storage/'.$configData['logo_footer']) : asset('public/images/no-image.png') }}" alt="Image" id="logo-preview">
+                                        <img src="{{ isset($configData['logo_footer']) ? Storage::disk('public')->url($configData['logo_footer']) : asset('images/no-image.png') }}" alt="Image" id="logo-preview">
                                     </div>
                                     <input type="file" class="form-control" name="logo_footer" id="logo">
                                 </div>
@@ -80,7 +80,7 @@
                                 <div class="form-group">
                                     <label>{{__('Logo Tageline')}}</label>
                                     <div class="preview-image">
-                                        <img src="{{ isset($configData['logo_tagline']) ? asset('public/storage/'.$configData['logo_tagline']) : asset('public/images/no-image.png') }}" alt="Image" id="logo-preview">
+                                        <img src="{{ isset($configData['logo_tagline']) ? Storage::disk('public')->url($configData['logo_tagline']) : asset('images/no-image.png') }}" alt="Image" id="logo-preview">
                                     </div>
                                     <input type="file" class="form-control" name="logo_tagline" id="logo">
                                 </div>
@@ -162,7 +162,7 @@
 @endsection
 @section('script')
 <!-- CK Editor -->
-<script src="{{ asset('public/admin/assets/bower_components/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('admin/assets/bower_components/ckeditor/ckeditor.js') }}"></script>
 <script>
   $(function () {
     $('.textarea').wysihtml5();

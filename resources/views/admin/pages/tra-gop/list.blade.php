@@ -39,7 +39,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered table-striped">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -60,7 +61,7 @@
                                         <td>{{ $count }}</td>
                                         <td>
                                             <div class="preview-image" style="width: 60px; height: auto;">
-                                                <img src="@if(!empty($list->p_image)) {{ asset('storage/app/' . $list->p_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                <img src="@if(!empty($list->p_image)) {{ Storage::disk('public')->url($list->p_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                             </div>
                                         </td>
                                         <td>{{ $list->p_name}}</td>
@@ -82,6 +83,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

@@ -42,13 +42,13 @@ class SellerController extends Controller
         // save banner to storage
         $bannerPath = '';
         if($request->hasFile('banner')) {
-            $bannerPath = Storage::putFile('uploads/seller', $request->file('banner'));
+            $bannerPath = Storage::disk('public')->putFile('uploads/seller', $request->file('banner'));
         }
 
         // save avatar to storage
         $avatarPath = '';
         if($request->hasFile('avatar')) {
-            $avatarPath = Storage::putFile('uploads/seller', $request->file('avatar'));
+            $avatarPath = Storage::disk('public')->putFile('uploads/seller', $request->file('avatar'));
         }
 
         DB::table('sellers')->insert([
@@ -92,14 +92,14 @@ class SellerController extends Controller
         // update banner in storage
         $bannerPath = $seller->Banner;
         if($request->hasFile('banner')) {
-            Storage::delete($seller->Banner);
-            $bannerPath = Storage::putFile('uploads/seller', $request->file('banner'));
+            Storage::disk('public')->delete($seller->Banner);
+            $bannerPath = Storage::disk('public')->putFile('uploads/seller', $request->file('banner'));
         }
         // update avatar in storage
         $avatarPath = $seller->AnhDaiDien;
         if($request->hasFile('avatar')) {
-            Storage::delete($seller->AnhDaiDien);
-            $avatarPath = Storage::putFile('uploads/seller', $request->file('avatar'));
+            Storage::disk('public')->delete($seller->AnhDaiDien);
+            $avatarPath = Storage::disk('public')->putFile('uploads/seller', $request->file('avatar'));
         }
 
         DB::table('sellers')
@@ -123,11 +123,11 @@ class SellerController extends Controller
 
         // remove banner in storage
         if(!empty($seller->Banner)) {
-            Storage::delete($seller->Banner);
+            Storage::disk('public')->delete($seller->Banner);
         }
         // remove avatar in storage
         if(!empty($seller->AnhDaiDien)) {
-            Storage::delete($seller->AnhDaiDien);
+            Storage::disk('public')->delete($seller->AnhDaiDien);
         }
         $seller->delete();
 

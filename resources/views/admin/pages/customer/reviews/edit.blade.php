@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label>Ảnh đại diện</label>
                                 <div class="preview-image">
-                                    <img src="@if(!empty($review->cr_image)) {{ asset('storage/app/' . $review->cr_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Avatar" id="preview">
+                                    <img src="@if(!empty($review->cr_image)) {{ Storage::disk('public')->url($review->cr_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Avatar" id="preview">
                                 </div>
                                 <input type="file" onchange="filePreview(event)" name="file">
                             </div>

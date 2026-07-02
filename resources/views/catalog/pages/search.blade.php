@@ -38,7 +38,7 @@
                                         <div class="product-card card">
                                             <div class="card-header">
                                                 <a class="card-image ratio ratio-1x1" title="{{ $product->pd_name }}" href="{{ route('catalog.product', [$category->slug, $product->pd_slug]) }}">
-                                                    <img src="@if(!empty($product->image)) {{ asset('storage/app/'.$product->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="250px" width="250px" alt="{{ $product->pd_name }}">
+                                                    <img src="@if(!empty($product->image)) {{ Storage::disk('public')->url($product->image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" height="250px" width="250px" alt="{{ $product->pd_name }}">
                                                 </a>
                                                 <div class="card-actions">
                                                     <div class="card-action">

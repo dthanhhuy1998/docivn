@@ -1,7 +1,7 @@
 <script>
     const currentPage = 'trang-chu';
     const THEME = 'theme_user';
-    const PATHTHEME = 'public/catalog/assets/public/upload/theme/';
+    const PATHTHEME = 'catalog/assets/public/upload/theme/';
     const URL_ROOT = './';
     const SDT = '0779999965';
     const USER_ID = -1;

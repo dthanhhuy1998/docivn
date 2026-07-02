@@ -73,7 +73,7 @@
                                 <div class="form-group">
                                     <label>Hình ảnh</label>
                                     <div class="preview-image">
-                                        <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Image" id="preview">
+                                        <img src="{{ Storage::disk('public')->url('uploads/default.png') }}" alt="Image" id="preview">
                                     </div>
                                     <input type="file" onchange="filePreview(event)" name="file">
                                 </div>
@@ -121,9 +121,11 @@
 
 @section('script')
 <!-- CK Editor -->
-<script src="{{ asset('public/admin/assets/bower_components/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('admin/assets/bower_components/ckeditor/ckeditor.js') }}"></script>
 <script>
     $(function () {
+        let __token = $('meta[name="csrf-token"]').attr('content');
+
         // Initialize Select2 Elements
         $('.select2').select2()
 
@@ -131,9 +133,11 @@
         $('.textarea').wysihtml5()
         var options = {
             filebrowserImageBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserImageUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Images&_token=' + __token,
             filebrowserBrowseUrl: '{{ config("app.url") }}/admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Files&_token='
+            filebrowserUploadUrl: '{{ config("app.url") }}/admin/laravel-filemanager/upload?type=Files&_token=' + __token,
+            language: 'vi',
+            defaultLanguage: 'vi',
         };
         CKEDITOR.replace('editor1', options);
     })

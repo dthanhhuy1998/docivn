@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 // Models
 use App\Models\ProductCategory;
@@ -47,8 +48,8 @@ class AppServiceProvider extends ServiceProvider
                 ->get();
 
             $configService = app(ConfigService::class);
-            $logo = $configService->get('logo') ? 'public/storage/' .$configService->get('logo') : 'public/images/no-image.png';
-            $logoTagLine = $configService->get('logo_tagline') ? 'public/storage/' .$configService->get('logo_tagline') : 'public/images/no-image.png';
+            $logo = $configService->get('logo') ? Storage::disk('public')->url($configService->get('logo')) : Storage::disk('public')->url('images/no-image.png');
+            $logoTagLine = $configService->get('logo_tagline') ? Storage::disk('public')->url($configService->get('logo_tagline')) : Storage::disk('public')->url('images/no-image.png');
 
             $userLogin = Customer::select('firstname', 'lastname')->where('email', session()->get('userLogin'))->first();
 
@@ -104,7 +105,7 @@ class AppServiceProvider extends ServiceProvider
         // Admin
         View::composer('admin.common.head', function ($view) {
             $configService = app(ConfigService::class);
-            $favicon = $configService->get('favicon') ? asset('public/storage/' .$configService->get('favicon')) : 'public/images/no-image.png';
+            $favicon = $configService->get('favicon') ? Storage::disk('public')->url($configService->get('favicon')) : Storage::disk('public')->url('images/no-image.png');
 
             $view->with([
                 'favicon'   => $favicon

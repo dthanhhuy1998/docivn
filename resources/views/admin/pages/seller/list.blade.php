@@ -44,7 +44,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered table-hover">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>S.no</th>
@@ -69,13 +70,13 @@
                                             <td>{{ $seller->CapBac }}</td>
                                             <td>
                                                 <div class="seller-img">
-                                                    <img src="@if(!empty($seller->Banner)) {{ asset('storage/app/'.$seller->Banner) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="seller banner">
+                                                    <img src="@if(!empty($seller->Banner)) {{ Storage::disk('public')->url($seller->Banner) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="seller banner">
                                                 </div>
                                             </td>
                                             <td><a href="#">{{ $seller->TenSeller }}</a></td>
                                             <td>
                                                 <div class="seller-img">
-                                                    <img src="@if(!empty($seller->AnhDaiDien)) {{ asset('storage/app/'.$seller->AnhDaiDien) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="seller avatar">
+                                                    <img src="@if(!empty($seller->AnhDaiDien)) {{ Storage::disk('public')->url($seller->AnhDaiDien) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="seller avatar">
                                                 </div>
                                             </td>
                                             <td><a href="{{ $seller->LinkFacebook }}" target="_blank"><small class="label bg-aqua">fb/{{ str_replace('https://www.facebook.com/', '', $seller->LinkFacebook) }}</small></a></td>
@@ -92,6 +93,7 @@
                                 @endif
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

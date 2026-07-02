@@ -43,7 +43,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table @if(count($images) > 0) id="datatable" @endif class="table table-bordered">
+                        <div class="table-responsive">
+                            <table @if(count($images) > 0) id="datatable" @endif class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th width="20">STT</th>
@@ -65,7 +66,7 @@
                                             <td>{{ $count }}</td>
                                             <td>
                                                 <div class="preview-image" style="width: 200px; height: auto;">
-                                                    <img src="@if(!empty($image->image_picture)) {{ asset('storage/app/'.$image->image_picture) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                    <img src="@if(!empty($image->image_picture)) {{ Storage::disk('public')->url($image->image_picture) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                                 </div>
                                             </td>
                                             <td>{{ $image->image_name }}</td>
@@ -93,6 +94,7 @@
                                 @endif
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

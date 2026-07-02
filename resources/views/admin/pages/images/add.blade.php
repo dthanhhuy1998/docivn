@@ -44,7 +44,7 @@
                             <div class="form-group @error('file') has-error @enderror">
                                 <label>Ảnh thu nhỏ (thumbnail)</label>
                                 <div class="preview-image" style="width: 250px; height: 168px;">
-                                    <img src="{{ asset('storage/app/uploads/default.png') }}" alt="Avatar" id="preview">
+                                    <img src="{{ Storage::disk('public')->url('uploads/default.png') }}" alt="Avatar" id="preview">
                                 </div>
                                 <input type="file" onchange="filePreview(event)" class="form-control" name="file">
                                 @error('file')<span class="help-block">{{ $message }}</span>@enderror

@@ -3,7 +3,7 @@
         <section class="sidebar">
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="@if(!empty(Auth::user()->image)) {{ asset('storage/app/' . Auth::user()->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" class="img-circle" alt="Avatar">
+                    <img src="@if(!empty(Auth::user()->image)) {{ Storage::disk('public')->url(Auth::user()->image) }} @else {{ Storage::disk('public')->url('uploads/user-default.png') }} @endif" class="img-circle" alt="Avatar">
                 </div>
                 <div class="pull-left info">
                     <p>{{ Auth::user()->lastname }} {{ Auth::user()->firstname }}</p>

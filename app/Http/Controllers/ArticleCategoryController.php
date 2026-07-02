@@ -60,7 +60,7 @@ class ArticleCategoryController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/article_category', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/article_category', $request->file('file'));
         }
 
         $articleCategory                    = new ArticleCategory();
@@ -106,8 +106,8 @@ class ArticleCategoryController extends Controller
         $articleCategory = ArticleCategory::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($articleCategory->image);
-            $file_path = Storage::putFile('uploads/article_category', $request->file('file'));
+            Storage::disk('public')->delete($articleCategory->image);
+            $file_path = Storage::disk('public')->putFile('uploads/article_category', $request->file('file'));
         } else {
             $file_path = $articleCategory->image;
         }
@@ -131,7 +131,7 @@ class ArticleCategoryController extends Controller
         // delete in article category table
         $articleCategory = ArticleCategory::findOrFail($articleCategoryId);
         if(!empty($articleCategory->image)) {
-            Storage::delete($articleCategory->image);
+            Storage::disk('public')->delete($articleCategory->image);
         }
 
         // delete in article to category table

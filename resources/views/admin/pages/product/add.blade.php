@@ -238,5 +238,5 @@
             url: @json(config('app.url')),
         };
     </script>
-    <script src="/public/{{ mix('js/admin/product/index.js', 'build') }}"></script>
+    <script src="{{ mix('js/admin/product/index.js', 'build') }}"></script>
 @endsection

@@ -28,8 +28,8 @@
                 </div>
                 <div class="row" id="animated-thumbnails-gallery">
                     @foreach($images as $image)
-                        <a class="col-lg-3 col-md-3 col-xs-12 mb-3" style="border-radius: 6px; overflow: hidden; display: block;" href="{{ asset('storage/app/'.$image->image_picture) }}">
-                            <img src="{{ asset('storage/app/'.$image->image_picture) }}" class="w-100" />
+                        <a class="col-lg-3 col-md-3 col-xs-12 mb-3" style="border-radius: 6px; overflow: hidden; display: block;" href="{{ Storage::disk('public')->url($image->image_picture) }}">
+                            <img src="{{ Storage::disk('public')->url($image->image_picture) }}" class="w-100" />
                         </a>
                     @endforeach
                 </div>

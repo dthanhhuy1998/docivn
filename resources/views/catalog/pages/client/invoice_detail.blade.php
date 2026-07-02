@@ -32,9 +32,9 @@
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
 
-	<link rel="stylesheet" href="{{ asset('public/catalog/assets/view/theme_user/invoice/css/reboot.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/catalog/assets/view/theme_user/invoice/fonts/fontawesome.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/catalog/assets/view/theme_user/invoice/css/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('catalog/assets/view/theme_user/invoice/css/reboot.css') }}">
+	<link rel="stylesheet" href="{{ asset('catalog/assets/view/theme_user/invoice/fonts/fontawesome.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('catalog/assets/view/theme_user/invoice/css/style.css') }}">
 </head>
 <body>
     <div class="invoice-main">

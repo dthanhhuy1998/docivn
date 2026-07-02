@@ -75,7 +75,7 @@
                                         <div class="item position-relative">
                                             <div class="item-media">
                                                 <div class="ratio" style="--bs-aspect-ratio: var(--aspect-ratio-1000x556);">
-                                                    <img src="@if(!empty($post->post_image)) {{ asset('storage/app/'.$post->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="{{ $post->post_title }}">
+                                                    <img src="@if(!empty($post->post_image)) {{ Storage::disk('public')->url($post->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="{{ $post->post_title }}">
                                                 </div>
                                             </div>
                                             <div class="item-body">
@@ -106,5 +106,5 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('public/catalog/assets/view/theme_user/baiviet/js/chitiet.js') }}" type="text/javascript"></script>
+<script src="{{ asset('catalog/assets/view/theme_user/baiviet/js/chitiet.js') }}" type="text/javascript"></script>
 @endsection

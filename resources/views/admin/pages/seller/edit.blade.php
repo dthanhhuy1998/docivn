@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label>Banner</label>
                                 <div class="banner-preview">
-                                    <img src="@if(!empty($seller->Banner)) {{ asset('storage/app/'.$seller->Banner) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="banner" id="banner-preview">
+                                    <img src="@if(!empty($seller->Banner)) {{ Storage::disk('public')->url($seller->Banner) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="banner" id="banner-preview">
                                 </div>
                                 <input type="file" onchange="imagePreview(event, 'banner-preview')" name="banner" class="form-control">
                             </div>
@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 <label>Ảnh đại diện</label>
                                 <div class="preview-image" style="width: 200px; height: auto;">
-                                    <img src="@if(!empty($seller->AnhDaiDien)) {{ asset('storage/app/'.$seller->AnhDaiDien) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Avatar" id="avatar-preview">
+                                    <img src="@if(!empty($seller->AnhDaiDien)) {{ Storage::disk('public')->url($seller->AnhDaiDien) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Avatar" id="avatar-preview">
                                 </div>
                                 <input type="file" onchange="imagePreview(event, 'avatar-preview')" name="avatar" class="form-control">
                             </div>

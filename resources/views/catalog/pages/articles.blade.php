@@ -30,7 +30,7 @@
                                     <div class="col">
                                         <a href="{{ route('catalog.article', [$article->category_slug, $article->post_slug]) }}" class="article-card card">
                                             <div class="card-header">
-                                                <img src="@if(!empty($article->post_image)) {{ asset('storage/app/'.$article->post_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="{{ $article->post_title }}">
+                                                <img src="@if(!empty($article->post_image)) {{ Storage::disk('public')->url($article->post_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" height="240px" width="312px" class="mw-100 image-cover transition-default" alt="{{ $article->post_title }}">
                                             </div>
                                             <div class="card-body d-flex flex-column">
                                                 <div class="card-meta"> Ngày đăng: {{ date_vi($article->post_created_at) }}</div>

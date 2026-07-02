@@ -28,7 +28,7 @@
                                 <li><!-- start message -->
                                     <a href="#">
                                     <div class="pull-left">
-                                        <img src="{{ asset('public/admin/assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                                        <img src="{{ asset('admin/assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                                     </div>
                                     <h4>
                                         Support Team
@@ -41,7 +41,7 @@
                                 <li>
                                     <a href="#">
                                     <div class="pull-left">
-                                        <img src="{{ asset('public/admin/assets/dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
+                                        <img src="{{ asset('admin/assets/dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
                                     </div>
                                     <h4>
                                         AdminLTE Design Team
@@ -53,7 +53,7 @@
                                 <li>
                                     <a href="#">
                                     <div class="pull-left">
-                                        <img src="{{ asset('public/admin/assets/dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
+                                        <img src="{{ asset('admin/assets/dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
                                     </div>
                                     <h4>
                                         Developers
@@ -65,7 +65,7 @@
                                 <li>
                                     <a href="#">
                                     <div class="pull-left">
-                                        <img src="{{ asset('public/admin/assets/dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
+                                        <img src="{{ asset('admin/assets/dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
                                     </div>
                                     <h4>
                                         Sales Department
@@ -77,7 +77,7 @@
                                 <li>
                                     <a href="#">
                                     <div class="pull-left">
-                                        <img src="{{ asset('public/admin/assets/dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
+                                        <img src="{{ asset('admin/assets/dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
                                     </div>
                                     <h4>
                                         Reviewers
@@ -215,13 +215,13 @@
                 @if(Auth::user())
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="@if(!empty(Auth::user()->image)) {{ asset('storage/app/' . Auth::user()->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" class="user-image" alt="Avatar">
+                        <img src="@if(!empty(Auth::user()->image)) {{ Storage::disk('public')->url(Auth::user()->image) }} @else {{ Storage::disk('public')->url('uploads/user-default.png') }} @endif" class="user-image" alt="Avatar">
                         <span class="hidden-xs">{{ Auth::user()->lastname }} {{ Auth::user()->firstname }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="@if(!empty(Auth::user()->image)) {{ asset('storage/app/' . Auth::user()->image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" class="img-circle" alt="Avatar">
+                            <img src="@if(!empty(Auth::user()->image)) {{ Storage::disk('public')->url(Auth::user()->image) }} @else {{ Storage::disk('public')->url('uploads/user-default.png') }} @endif" class="img-circle" alt="Avatar">
                             <p>
                                 {{ Auth::user()->lastname }} {{ Auth::user()->firstname }} - {{ Auth::user()->userGroup->name }}
                                 <small>Ngày tạo: {{ date_vi(Auth::user()->created_at) }}</small>

@@ -60,7 +60,7 @@ class ProductCategoryController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/product_category', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/product_category', $request->file('file'));
         }
 
         $productCategory                    = new ProductCategory();
@@ -111,8 +111,8 @@ class ProductCategoryController extends Controller
         $productCategory = ProductCategory::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($productCategory->image);
-            $file_path = Storage::putFile('uploads/product_category', $request->file('file'));
+            Storage::disk('public')->delete($productCategory->image);
+            $file_path = Storage::disk('public')->putFile('uploads/product_category', $request->file('file'));
         } else {
             $file_path = $productCategory->image;
         }
@@ -137,7 +137,7 @@ class ProductCategoryController extends Controller
         $category = ProductCategory::findOrFail($categoryId);
         // remove image in storage
         if(!empty($category->image))
-            Storage::delete($category->image);
+            Storage::disk('public')->delete($category->image);
         // set all product to default category
         $this->setProductDefault($categoryId);
         // delete in product to category table

@@ -40,7 +40,7 @@ class SlideProductController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/slide/product', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/slide/product', $request->file('file'));
         }
 
         DB::table('slide')->insert([
@@ -71,8 +71,8 @@ class SlideProductController extends Controller
         $slide = Slide::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($slide->slide_image);
-            $file_path = Storage::putFile('uploads/slide/product', $request->file('file'));
+            Storage::disk('public')->delete($slide->slide_image);
+            $file_path = Storage::disk('public')->putFile('uploads/slide/product', $request->file('file'));
         } else {
             $file_path = $slide->slide_image;
         }
@@ -94,7 +94,7 @@ class SlideProductController extends Controller
         $slide = Slide::findOrFail($slideId);
 
         if(!empty($slide->slide_image)) {
-            Storage::delete($slide->slide_image);
+            Storage::disk('public')->delete($slide->slide_image);
         }
 
         $slide->delete();

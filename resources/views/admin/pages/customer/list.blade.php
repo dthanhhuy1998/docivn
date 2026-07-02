@@ -39,7 +39,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered table-striped">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -83,6 +84,7 @@
                                 @endif
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

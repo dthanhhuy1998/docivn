@@ -36,7 +36,7 @@
                             <div class="form-group  @error('file') has-error @enderror">
                                 <label>Ảnh slide</label>
                                 <div class="preview-image" style="width: 200px; height: auto;">
-                                    <img src="@if(!empty($slide->slide_image)) {{ asset('storage/app/' . $slide->slide_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Avatar" id="preview">
+                                    <img src="@if(!empty($slide->slide_image)) {{ Storage::disk('public')->url($slide->slide_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Avatar" id="preview">
                                 </div>
                                 <input type="file" onchange="filePreview(event)" name="file">
                                 @error('file')

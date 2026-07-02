@@ -8,6 +8,7 @@ use SEOMeta;
 use DB;
 use URL;
 use Validator;
+use Storage;
 
 // Models
 use App\Models\Product;
@@ -35,7 +36,7 @@ class CartController extends Controller
             $pageTitle = 'Giỏ hàng của bạn';
             $description = $this->configModel->getConfig('meta_description');
             $keyword = $this->configModel->getConfig('meta_keyword');
-            $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+            $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
             $this->seo_tools($pageTitle, $description, $keyword, $logo, URL::current());
             
             return view('catalog.pages.cart',
@@ -74,7 +75,7 @@ class CartController extends Controller
                 'max_qty'           => $product->quantity,
                 'original_price'    => $product->price,
                 'view'              => route('catalog.product', [$product->pivot->category->slug, $product->productDescription->slug]),
-                'image'             => !empty($product->image) ? asset('storage/app/'.$product->image) : asset('storage/app/uploads/default.png'),
+                'image'             => !empty($product->image) ? Storage::disk('public')->url($product->image) : Storage::disk('public')->url('uploads/default.png'),
                 'attribute'         => ''
             ]
         ]);
@@ -167,7 +168,7 @@ class CartController extends Controller
             $pageTitle = 'Đặt hàng';
             $description = $this->configModel->getConfig('meta_description');
             $keyword = $this->configModel->getConfig('meta_keyword');
-            $logo = asset('storage/app/'.$this->configModel->getConfig('logo'));
+            $logo = Storage::disk('public')->url($this->configModel->getConfig('logo'));
             $this->seo_tools($pageTitle, $description, $keyword, $logo, URL::current());
 
             return view('catalog.pages.order',

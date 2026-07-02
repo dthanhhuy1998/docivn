@@ -51,7 +51,7 @@ class ProductGroupController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/product_group', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/product_group', $request->file('file'));
         }
 
         $productGroup                    = new ProductGroup();
@@ -97,8 +97,8 @@ class ProductGroupController extends Controller
         $productGroup = ProductGroup::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($productGroup->image);
-            $file_path = Storage::putFile('uploads/product_group', $request->file('file'));
+            Storage::disk('public')->delete($productGroup->image);
+            $file_path = Storage::disk('public')->putFile('uploads/product_group', $request->file('file'));
         } else {
             $file_path = $productGroup->image;
         }
@@ -122,7 +122,7 @@ class ProductGroupController extends Controller
         // delete in product gruop table
         $group = ProductGroup::findOrFail($groupId);
         if(!empty($group->image)) {
-            Storage::delete($group->image);
+            Storage::disk('public')->delete($group->image);
         }
 
         // delete in product to group table

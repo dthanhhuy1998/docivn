@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     public function getAdminLogin() {
-        $favicon = asset('storage/app/'.$this->configModel->getConfig('favicon'));
+        $favicon = Storage::disk('public')->url($this->configModel->getConfig('favicon'));
 
         $headingTitle = heading('Đăng nhập');
 
@@ -101,7 +101,7 @@ class UserController extends Controller
 
         $file_path = '';
         if($request->hasFile('file')) {
-            $file_path = Storage::putFile('uploads/user', $request->file('file'));
+            $file_path = Storage::disk('public')->putFile('uploads/user', $request->file('file'));
         }
 
         $user = new User();
@@ -149,8 +149,8 @@ class UserController extends Controller
         $user = User::findOrFail($request->id);
 
         if($request->hasFile('file')) {
-            Storage::delete($user->image);
-            $file_path = Storage::putFile('uploads/user', $request->file('file'));
+            Storage::disk('public')->delete($user->image);
+            $file_path = Storage::disk('public')->putFile('uploads/user', $request->file('file'));
         } else {
             $file_path = $user->image;
         }
@@ -172,7 +172,7 @@ class UserController extends Controller
         $user = User::findOrFail($userId);
 
         if(!empty($user->image)) {
-            Storage::delete($user->image);
+            Storage::disk('public')->delete($user->image);
         }
 
         if($user->id != Auth::user()->id) {
@@ -214,6 +214,5 @@ class UserController extends Controller
         return redirect()->route('getAdminLogin')->with('success_msg', 'Bạn đã đổi mật khẩu thành công. Vui lòng đăng nhập lại');
     }
 }
-
 
 

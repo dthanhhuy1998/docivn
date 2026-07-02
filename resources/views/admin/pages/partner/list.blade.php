@@ -44,7 +44,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered table-striped">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th width="5%" class="text-right">STT</th>
@@ -64,7 +65,7 @@
                                         <td>{{ $count }}</td>
                                         <td>
                                             <div class="preview-image" style="width: 120px; height: auto;">
-                                                <img src="@if(!empty($partner->partner_image)) {{ asset('storage/app/' . $partner->partner_image) }} @else {{ asset('storage/app/uploads/default.png') }} @endif" alt="Image">
+                                                <img src="@if(!empty($partner->partner_image)) {{ Storage::disk('public')->url($partner->partner_image) }} @else {{ Storage::disk('public')->url('uploads/default.png') }} @endif" alt="Image">
                                             </div>
                                         </td>
                                         <td>{{ $partner->partner_link }}</td>
@@ -85,6 +86,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

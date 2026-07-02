@@ -28,7 +28,7 @@
                 <div class="col-md-12 col-lg-4 order-1 order-lg-2">
                     <div class="footer-middle_inner position-relative text-center">
                         <div class="footer-logo">
-                            <img height="50px" width="130px" class="w-100 img-fluid transition-default" src="{{ asset('public/storage/' .$siteConfig['logo_footer']) }}" alt="{{$siteConfig['logo_footer'] ?? ''}}">
+                            <img height="50px" width="130px" class="w-100 img-fluid transition-default" src="{{ Storage::disk('public')->url($siteConfig['logo_footer']) }}" alt="{{$siteConfig['logo_footer'] ?? ''}}">
                         </div>
                         <div class="footer-desc text-white">
                             {!! $siteConfig['footer_content'] ?? '' !!}
